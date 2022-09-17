@@ -20,6 +20,8 @@ class LinkedList<T> {
         return size == 0
     }
 
+
+    // to print nodes in linkedlist
     override fun toString(): String {
         return if (isEmpty()) {
             "list is empty"
@@ -27,4 +29,19 @@ class LinkedList<T> {
             head.toString()
         }
     }
+
+    // this function we use for inserting new element at first position in linked list
+    fun push(value: T){
+        head = Node(value, next = head)   // here we will assign previous head value i.e null to next node
+
+        // when list is empty means tail is null so we add new node assign to tail
+        // if tail is not null then we add new element and assign to head that is we did above
+        if(tail == null){
+            tail = head
+        }
+        size++    // whenever new node added then size must be increased by one
+    }
+
+
+
 }
