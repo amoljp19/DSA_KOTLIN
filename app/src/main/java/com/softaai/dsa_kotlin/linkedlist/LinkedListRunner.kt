@@ -8,12 +8,23 @@ package com.softaai.dsa_kotlin.linkedlist
 
 fun main(){
     // push operation at first position in linked list
-    val list = LinkedList<String>()
+    "push" example {
 
-    list.push("amol")
-    list.push("satara")
-    list.push("bajirao")
-    list.push("pune")
+        val list = LinkedList<String>()
 
-    println(list)
+        list.push("amol")
+        list.push("satara")
+        list.push("bajirao")
+        list.push("pune")
+
+        println(list)
+
+    }
+}
+
+
+infix fun String.example(function: () -> Unit){
+    println("----- Example of $this -----")
+    function()
+    println()
 }
