@@ -40,12 +40,31 @@ fun main(){
         println(list)
     }*/
 
-    "fluent interface append" example {
+   /* "fluent interface append" example {
         val list = LinkedList<Int>()
 
         list.appendingAtTail(2).appendingAtTail(1).appendingAtTail(3).appendingAtTail(4)
 
         println(list)
+    }*/
+
+
+    "linked list insert At perticular index " example {
+
+        val list = LinkedList<Int>()
+        list.pushAtHead(1)
+        list.pushAtHead(2)
+        list.pushAtHead(3)
+
+        println("list before insert $list")
+
+        var middleNode = list.nodeAt(1)!!
+
+        for(i in 1..3){
+            middleNode = list.insertAt(-1 * i, middleNode)!!
+        }
+
+        println("After inserting $list")
     }
 
 
