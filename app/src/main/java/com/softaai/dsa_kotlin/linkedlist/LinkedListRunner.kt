@@ -12,14 +12,23 @@ fun main(){
 
         val list = LinkedList<String>()
 
-        list.push("amol")
-        list.push("satara")
-        list.push("bajirao")
-        list.push("pune")
+        list.pushAtHead("amol")
+        list.pushAtHead("satara")
+        list.pushAtHead("bajirao")
+        list.pushAtHead("pune")
 
         println(list)
 
     }
+
+
+    "fluent interface pushing" example {
+        val list = LinkedList<Int>()
+        list.pushingAtHead(2).pushingAtHead(3).pushingAtHead(7).pushingAtHead(1)
+        println(list)
+    }
+
+
 }
 
 
