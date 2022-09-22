@@ -8,7 +8,7 @@ package com.softaai.dsa_kotlin.linkedlist
 
 fun main(){
     // push operation at first position in linked list
-    "push" example {
+   /* "push" example {
 
         val list = LinkedList<String>()
 
@@ -19,12 +19,32 @@ fun main(){
 
         println(list)
 
-    }
+    }*/
 
 
-    "fluent interface pushing" example {
+   /* "fluent interface pushing" example {
         val list = LinkedList<Int>()
         list.pushingAtHead(2).pushingAtHead(3).pushingAtHead(7).pushingAtHead(1)
+        println(list)
+    }
+*/
+
+    /*"append" example{
+        val list = LinkedList<Int>()
+
+        list.appendAtTail(1)
+        list.appendAtTail(2)
+        list.appendAtTail(3)
+        list.appendAtTail(4)
+
+        println(list)
+    }*/
+
+    "fluent interface append" example {
+        val list = LinkedList<Int>()
+
+        list.appendingAtTail(2).appendingAtTail(1).appendingAtTail(3).appendingAtTail(4)
+
         println(list)
     }
 

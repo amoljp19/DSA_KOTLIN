@@ -32,6 +32,7 @@ class LinkedList<T> {
 
 
     // this function we use for inserting new element at first position in linked list
+    // head-first insertion
     fun pushAtHead(value: T){
         head = Node(value, next = head)   // here we will assign previous head value i.e null to next node
 
@@ -45,6 +46,7 @@ class LinkedList<T> {
 
 
     // push using chaining
+    // head first insertion using chaining
     fun pushingAtHead(value: T) : LinkedList<T>{
         head = Node(value, next = head)
         if (tail == null){
@@ -55,11 +57,31 @@ class LinkedList<T> {
     }
 
     // appending new node at the last position of linkedlist
-    fun append(value: T){
+    // tail end insertion
+    fun appendAtTail(value: T){
         //1 -> 2 - > 3 -> 4
-       //tail = Node()
+       if(isEmpty()){
+           pushAtHead(value)
+           return
+       }
+       tail?.next = Node(value)
+       tail = tail?.next
+       size++;
     }
 
+
+    // append using chaining
+    fun appendingAtTail(value: T) : LinkedList<T>{
+        if (isEmpty()){
+            pushAtHead(value)
+            return this
+        }
+
+        tail?.next = Node(value)
+        tail = tail?.next
+
+        return this
+    }
 
 
 }
