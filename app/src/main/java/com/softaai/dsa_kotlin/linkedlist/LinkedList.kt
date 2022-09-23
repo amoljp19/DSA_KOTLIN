@@ -33,12 +33,15 @@ class LinkedList<T> {
 
     // this function we use for inserting new element at first position in linked list
     // head-first insertion
-    fun pushAtHead(value: T){
-        head = Node(value, next = head)   // here we will assign previous head value i.e null to next node
+    fun pushAtHead(value: T) {
+        head = Node(
+            value,
+            next = head
+        )   // here we will assign previous head value i.e null to next node
 
         // when list is empty means tail is null so we add new node assign to tail
         // if tail is not null then we add new element and assign to head that is we did above
-        if(tail == null){
+        if (tail == null) {
             tail = head
         }
         size++    // whenever new node added then size must be increased by one
@@ -47,9 +50,9 @@ class LinkedList<T> {
 
     // push using chaining
     // head first insertion using chaining
-    fun pushingAtHead(value: T) : LinkedList<T>{
+    fun pushingAtHead(value: T): LinkedList<T> {
         head = Node(value, next = head)
-        if (tail == null){
+        if (tail == null) {
             tail = head
         }
         size++
@@ -58,21 +61,21 @@ class LinkedList<T> {
 
     // appending new node at the last position of linkedlist
     // tail end insertion
-    fun appendAtTail(value: T){
+    fun appendAtTail(value: T) {
         //1 -> 2 - > 3 -> 4
-       if(isEmpty()){
-           pushAtHead(value)
-           return
-       }
-       tail?.next = Node(value)
-       tail = tail?.next
-       size++;
+        if (isEmpty()) {
+            pushAtHead(value)
+            return
+        }
+        tail?.next = Node(value)
+        tail = tail?.next
+        size++;
     }
 
 
     // append using chaining
-    fun appendingAtTail(value: T) : LinkedList<T>{
-        if (isEmpty()){
+    fun appendingAtTail(value: T): LinkedList<T> {
+        if (isEmpty()) {
             pushAtHead(value)
             return this
         }
@@ -84,11 +87,11 @@ class LinkedList<T> {
     }
 
 
-    fun nodeAt(index:Int) : Node<T>? {
+    fun nodeAt(index: Int): Node<T>? {
         var currentNode = head
-        var currentIndex  = 0
+        var currentIndex = 0
 
-        while(currentNode != null && currentIndex < index){
+        while (currentNode != null && currentIndex < index) {
             currentNode = currentNode.next
             currentIndex++
         }
@@ -97,8 +100,8 @@ class LinkedList<T> {
     }
 
 
-    fun insertAt(value:T, afterNode: Node<T>): Node<T>?{
-        if(tail == afterNode){
+    fun insertAt(value: T, afterNode: Node<T>): Node<T>? {
+        if (tail == afterNode) {
             appendAtTail(value = value)
             return tail!!
         }
@@ -107,30 +110,67 @@ class LinkedList<T> {
 
         afterNode.next = newNode
         size++
-        return  newNode
+        return newNode
     }
 
 
-    fun popFromFirst() : T? {
+    fun popFromFirst(): T? {
         // two cases 1. list empty and 2. non empty()
         // in both cases value returns
         // but if non empty then size reduced by 1 position and head next reference pointing to next node
 
-        if(!isEmpty()){
+        if (!isEmpty()) {
             size--
         }
 
         val result = head?.value
-        head = head?.next         // head pointing to next node and removing node is garbage collected by GC
+        head =
+            head?.next         // head pointing to next node and removing node is garbage collected by GC
 
         //suppose if we removed only one node present in list then our list become empty so we need to nullify tail as
         // as when list doesnt contain anything that time head and tail both pointing to null
 
-        if(isEmpty()){
+        if (isEmpty()) {
             tail = null
         }
 
         return result
+    }
+
+    fun removeLast(): T? {
+        // we need to take care of two conditions 1. when list empty and 2. when list is non empty
+
+        // if list is empty means we need to return null value and if not then not
+
+        val head = head ?: return null
+
+        if(head.next == null){
+            popFromFirst()       // if only one node present then directly pop that node
+        }
+
+        size--
+
+        // but if list contains more element then we need to travrse till last node
+        // initially prev and curent both points to head node and next points to head.next that is current.next
+        // while each iteration we are just changing pointers and when we at last that time our current is on last node
+        // and we need to assign prev.next = null as we are removing current node and also mark tail as our prev
+        // and finally return current value and then current node will be garbage collected by GC
+
+        var prev = head
+        var current = head
+
+        var next = current.next
+
+        while (next != null){
+            prev = current
+            current = next
+            next = current.next
+        }
+
+        prev.next = null    // as initially it points to last node so removed that connection buy nullifying it
+        tail = prev         // finally tail should points last element that is now prev
+
+        return current.value
     }
 
 

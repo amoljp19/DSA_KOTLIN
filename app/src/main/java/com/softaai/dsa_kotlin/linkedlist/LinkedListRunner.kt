@@ -68,7 +68,7 @@ fun main(){
     }*/
 
 
-   "pop node from first position " example{
+   /*"pop node from first position " example{
        val list = LinkedList<Int>()
        list.pushAtHead(3)
        list.pushAtHead(2)
@@ -78,7 +78,24 @@ fun main(){
        val poppedValue = list.popFromFirst()
        println("list after pop $list")
        println("popped node value $poppedValue")
+   }*/
+
+
+   "remove last node from list" example {
+       val list = LinkedList<Int>()
+       list.pushAtHead(3)
+       list.pushAtHead(2)
+       list.pushAtHead(1)
+
+       println("list before removing last element $list")
+
+       val removedLast = list.removeLast()
+
+       println("list after removed last node $list")
+
+       println("removed last node value $removedLast")
    }
+
 
 
 }
