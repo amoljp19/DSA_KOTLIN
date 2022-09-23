@@ -49,7 +49,7 @@ fun main(){
     }*/
 
 
-    "linked list insert At perticular index " example {
+  /*  "linked list insert At perticular index " example {
 
         val list = LinkedList<Int>()
         list.pushAtHead(1)
@@ -65,7 +65,20 @@ fun main(){
         }
 
         println("After inserting $list")
-    }
+    }*/
+
+
+   "pop node from first position " example{
+       val list = LinkedList<Int>()
+       list.pushAtHead(3)
+       list.pushAtHead(2)
+       list.pushAtHead(1)
+
+       println("list before pop $list")
+       val poppedValue = list.popFromFirst()
+       println("list after pop $list")
+       println("popped node value $poppedValue")
+   }
 
 
 }

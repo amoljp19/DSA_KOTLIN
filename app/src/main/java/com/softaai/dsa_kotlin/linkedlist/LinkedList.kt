@@ -111,4 +111,27 @@ class LinkedList<T> {
     }
 
 
+    fun popFromFirst() : T? {
+        // two cases 1. list empty and 2. non empty()
+        // in both cases value returns
+        // but if non empty then size reduced by 1 position and head next reference pointing to next node
+
+        if(!isEmpty()){
+            size--
+        }
+
+        val result = head?.value
+        head = head?.next         // head pointing to next node and removing node is garbage collected by GC
+
+        //suppose if we removed only one node present in list then our list become empty so we need to nullify tail as
+        // as when list doesnt contain anything that time head and tail both pointing to null
+
+        if(isEmpty()){
+            tail = null
+        }
+
+        return result
+    }
+
+
 }
