@@ -81,7 +81,7 @@ fun main(){
    }*/
 
 
-   "remove last node from list" example {
+   /*"remove last node from list" example {
        val list = LinkedList<Int>()
        list.pushAtHead(3)
        list.pushAtHead(2)
@@ -94,9 +94,23 @@ fun main(){
        println("list after removed last node $list")
 
        println("removed last node value $removedLast")
+   }*/
+
+   "remove after node " example {
+       val list = LinkedList<Int>()
+       list.pushAtHead(3)
+       list.pushAtHead(2)
+       list.pushAtHead(1)
+       
+       println("before removeAfterNode called $list")
+
+       val index = 1
+       val afterNode = list.nodeAt(index-1)
+       val removedNode = list.removeAfter(afterNode!!)
+
+       println("after removeAfterNode called $list")
+       println("removedNode $removedNode")
    }
-
-
 
 }
 

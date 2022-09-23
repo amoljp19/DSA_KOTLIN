@@ -174,4 +174,26 @@ class LinkedList<T> {
     }
 
 
+    fun removeAfter(node: Node<T>) : T? {
+        val result = node.next?.value    // as we want to remove node after perticular node so definetly next node should be removed
+
+        //suppose we have 1->2->3 then afterNode = 2 then last node i.e 3 is our tail but after removing
+        // we need to update our new tail node so thats why new tail node is current node that is 2
+        if(node.next == tail){
+            tail = node
+        }
+
+        // means afterNode middle position somewhere or at first position so we are removing means size must be reduced
+        if(node.next != null){
+            size--
+        }
+
+        // 1->2->3   we directly rmove 2 and points to next that is 1->3
+        node.next = node.next?.next
+
+        return result
+
+    }
+
+
 }
