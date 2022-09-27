@@ -10,11 +10,12 @@ import com.softaai.dsa_kotlin.linkedlist.node.Node
 // it defines LinkedList property and different operations
 // as we know it has two pointers head and tail
 
-class LinkedList<T> {
+class LinkedList<T> : Iterable<T> {
 
     private var head: Node<T>? = null
     private var tail: Node<T>? = null
-    private var size = 0
+    var size = 0
+    private set   // making compatible with iterable as size rquired to be accessible but its setter should be private
 
     fun isEmpty(): Boolean {
         return size == 0
@@ -193,6 +194,10 @@ class LinkedList<T> {
 
         return result
 
+    }
+
+    override fun iterator(): Iterator<T> {
+        return LinkedListIterator(this)
     }
 
 

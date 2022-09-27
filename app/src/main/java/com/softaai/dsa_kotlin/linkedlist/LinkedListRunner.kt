@@ -21,7 +21,6 @@ fun main(){
 
     }*/
 
-
    /* "fluent interface pushing" example {
         val list = LinkedList<Int>()
         list.pushingAtHead(2).pushingAtHead(3).pushingAtHead(7).pushingAtHead(1)
@@ -48,7 +47,6 @@ fun main(){
         println(list)
     }*/
 
-
   /*  "linked list insert At perticular index " example {
 
         val list = LinkedList<Int>()
@@ -67,7 +65,6 @@ fun main(){
         println("After inserting $list")
     }*/
 
-
    /*"pop node from first position " example{
        val list = LinkedList<Int>()
        list.pushAtHead(3)
@@ -79,7 +76,6 @@ fun main(){
        println("list after pop $list")
        println("popped node value $poppedValue")
    }*/
-
 
    /*"remove last node from list" example {
        val list = LinkedList<Int>()
@@ -96,7 +92,7 @@ fun main(){
        println("removed last node value $removedLast")
    }*/
 
-   "remove after node " example {
+   /*"remove after node " example {
        val list = LinkedList<Int>()
        list.pushAtHead(3)
        list.pushAtHead(2)
@@ -110,7 +106,20 @@ fun main(){
 
        println("after removeAfterNode called $list")
        println("removedNode $removedNode")
-   }
+   }*/
+
+    "printing double of list elements" example{
+        val list = LinkedList<Int>()
+        list.pushAtHead(3)
+        list.pushAtHead(2)
+        list.pushAtHead(1)
+        list.pushAtHead(-9)
+
+        for(node in list){
+            println("double of $node = " + (2 * node))
+        }
+
+    }
 
 }
 
