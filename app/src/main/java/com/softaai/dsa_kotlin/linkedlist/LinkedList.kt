@@ -10,14 +10,15 @@ import com.softaai.dsa_kotlin.linkedlist.node.Node
 // it defines LinkedList property and different operations
 // as we know it has two pointers head and tail
 
-class LinkedList<T> : Iterable<T> {
+class LinkedList<T> : Iterable<T>, Collection<T> {
 
     private var head: Node<T>? = null
     private var tail: Node<T>? = null
-    var size = 0
+
+    override var size = 0
     private set   // making compatible with iterable as size rquired to be accessible but its setter should be private
 
-    fun isEmpty(): Boolean {
+    override fun isEmpty(): Boolean {
         return size == 0
     }
 
@@ -198,6 +199,21 @@ class LinkedList<T> : Iterable<T> {
 
     override fun iterator(): Iterator<T> {
         return LinkedListIterator(this)
+    }
+
+    override fun contains(element: T): Boolean {
+        for(item in this){
+            return item == element
+        }
+        return false
+    }
+
+    // inefficient O(n^2), but if collection interface required then need to provide it .
+    override fun containsAll(elements: Collection<T>): Boolean {
+        for(search in elements){
+            if(!contains(search)) return false
+        }
+        return true
     }
 
 
