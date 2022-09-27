@@ -9,7 +9,7 @@ import com.softaai.dsa_kotlin.linkedlist.node.Node
  */
 
 // we need to pass reference of linkedlist as we are iterating that list only
-class LinkedListIterator<T>(private val list: LinkedList<T>) : Iterator<T> {
+class LinkedListIterator<T>(private val list: LinkedList<T>) : MutableIterator<T> {
 
     private var index = 0    // to track the position in collection
 
@@ -29,5 +29,16 @@ class LinkedListIterator<T>(private val list: LinkedList<T>) : Iterator<T> {
         }
         index++
         return lastNode!!.value
+    }
+
+    override fun remove() {
+        if(index == 1){
+            list.popFromFirst()
+        }else{
+            val prevNode =  list.nodeAt(index - 2) ?: return
+            list.removeAfter(prevNode)
+            lastNode = prevNode
+        }
+        index--
     }
 }
