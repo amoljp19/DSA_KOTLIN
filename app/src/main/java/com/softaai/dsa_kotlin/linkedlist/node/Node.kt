@@ -18,3 +18,14 @@ data class Node<T>(var value: T, var next: Node<T>? = null) {
         }
     }
 }
+
+
+fun <T> Node<T>.printInReverse() {
+    this.next?.printInReverse()
+    // 1
+    if (this.next != null) {
+        print(" -> ")
+    }
+    // 2
+    print(this.value.toString())
+}

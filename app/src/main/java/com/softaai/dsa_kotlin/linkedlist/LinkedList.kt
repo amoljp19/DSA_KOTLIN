@@ -1,6 +1,7 @@
 package com.softaai.dsa_kotlin.linkedlist
 
 import com.softaai.dsa_kotlin.linkedlist.node.Node
+import com.softaai.dsa_kotlin.linkedlist.node.printInReverse
 
 /**
  * Created by amoljp19 on 9/17/2022.
@@ -267,6 +268,9 @@ class LinkedList<T> : Iterable<T>, Collection<T>, MutableIterable<T>, MutableCol
         }
         return result
     }
+
+
+
 
 
 }

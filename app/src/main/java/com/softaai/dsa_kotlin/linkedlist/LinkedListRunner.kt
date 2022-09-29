@@ -1,5 +1,8 @@
 package com.softaai.dsa_kotlin.linkedlist
 
+import com.softaai.dsa_kotlin.linkedlist.node.Node
+import com.softaai.dsa_kotlin.linkedlist.node.printInReverse
+
 
 /**
  * Created by amoljp19 on 9/17/2022.
@@ -122,7 +125,7 @@ fun main(){
     }*/
 
 
-    "removing elements" example {
+  /*  "removing elements" example {
         val list: MutableCollection<Int> = LinkedList()
         list.add(3)
         list.add(2)
@@ -152,8 +155,33 @@ fun main(){
         println(list)
         list.removeAll(listOf(3, 4, 5))
         println(list)
-    }
+    }*/
 
+
+   /* "print in reverse" example {
+        val list = LinkedList<Int>()
+        list.add(3)
+        list.add(2)
+        list.add(1)
+        list.add(4)
+        list.add(5)
+        println(list)
+        list.printInReverse()
+    }*/
+
+    "middle node in list" example {
+        val list = LinkedList<Int>()
+        list.pushAtHead(1)
+        list.pushAtHead(2)
+        list.pushAtHead(3)
+        list.pushAtHead(4)
+        list.pushAtHead(5)
+        //list.pushAtHead(6)
+
+        println(list)
+
+        println("middle : " + list.getMiddleNode()?.value )
+    }
 }
 
 
@@ -162,3 +190,24 @@ infix fun String.example(function: () -> Unit){
     function()
     println()
 }
+
+fun <T> LinkedList<T>.printInReverse(){
+    this.nodeAt(0)?.printInReverse()
+}
+
+fun <T> LinkedList<T>.getMiddleNode() : Node<T>? {
+
+    var slowPointer = this.nodeAt(0)
+    var fastPointer = this.nodeAt(0)
+
+    while(fastPointer != null){
+        fastPointer = fastPointer.next
+        if (fastPointer != null){
+            fastPointer = fastPointer.next
+            slowPointer = slowPointer?.next
+        }
+    }
+
+    return slowPointer
+}
+
