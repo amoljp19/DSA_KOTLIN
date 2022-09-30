@@ -184,7 +184,7 @@ fun main(){
     }*/
 
 
-    "reverse linked list by node references" example {
+   /* "reverse linked list by node references" example {
         val list = LinkedList<Int>()
         list.pushAtHead(3)
         list.pushAtHead(1)
@@ -194,6 +194,25 @@ fun main(){
 
         println("original list : $list")
         println("reversed list : ${list.reverse()}")   //dont use reversed() it will give result like [3,1,4,5,2]
+    }*/
+
+
+    "merge two list " example {
+        val first = LinkedList<Int>()
+        first.pushAtHead(3)
+        first.pushAtHead(2)
+        first.pushAtHead(1)
+        first.pushAtHead(-1)
+
+        val second = LinkedList<Int>()
+        second.pushAtHead(7)
+        second.pushAtHead(6)
+        second.pushAtHead(4)
+        second.pushAtHead(1)
+
+        println(first)
+        println(second)
+        println("mergged list : ${first.mergedList(second)}")
     }
 
 }
@@ -248,4 +267,47 @@ fun <T> LinkedList<T>.reverse() : LinkedList<T>{
 
 
 }
+
+fun <T : Comparable<T>> LinkedList<T>.mergedList(
+    otherList: LinkedList<T>
+) : LinkedList<T>{
+    if(this.isEmpty()) return otherList
+    if(otherList.isEmpty()) return this
+
+    val result = LinkedList<T>()
+
+    var left = this.nodeAt(0)
+    var right = otherList.nodeAt(0)
+
+    while(left != null && right != null){
+        if (left.value < right.value){
+            left = append(result, left)
+        }
+        else {
+            right = append(result, right)
+        }
+    }
+
+    while (left != null){
+        left = append(result, left)
+    }
+
+    while(right != null){
+        right = append(result, right)
+    }
+
+    return result
+}
+
+
+fun <T : Comparable<T>> LinkedList<T>.append(
+    result: LinkedList<T>,
+    node: Node<T>
+) : Node<T>?{
+    result.appendAtTail(node.value)
+    return node.next
+}
+
+
+
 
