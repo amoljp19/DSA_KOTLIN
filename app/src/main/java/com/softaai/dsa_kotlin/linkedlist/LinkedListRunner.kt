@@ -169,7 +169,7 @@ fun main(){
         list.printInReverse()
     }*/
 
-    "middle node in list" example {
+  /*  "middle node in list" example {
         val list = LinkedList<Int>()
         list.pushAtHead(1)
         list.pushAtHead(2)
@@ -181,7 +181,21 @@ fun main(){
         println(list)
 
         println("middle : " + list.getMiddleNode()?.value )
+    }*/
+
+
+    "reverse linked list by node references" example {
+        val list = LinkedList<Int>()
+        list.pushAtHead(3)
+        list.pushAtHead(1)
+        list.pushAtHead(4)
+        list.pushAtHead(5)
+        list.pushAtHead(2)
+
+        println("original list : $list")
+        println("reversed list : ${list.reverse()}")   //dont use reversed() it will give result like [3,1,4,5,2]
     }
+
 }
 
 
@@ -209,5 +223,29 @@ fun <T> LinkedList<T>.getMiddleNode() : Node<T>? {
     }
 
     return slowPointer
+}
+
+
+fun <T> addInReverse(list: LinkedList<T>, node: Node<T>){
+    // 3 4 5 6
+    val next = node.next
+    if (next != null){
+        addInReverse(list, next)
+    }
+
+    list.appendAtTail(node.value)   // we cannot append next because at the end it will become null so list should starts from last element and not with null
+}
+
+
+fun <T> LinkedList<T>.reverse() : LinkedList<T>{
+    val result = LinkedList<T>()   // this for new reversed list as we pass head, it we process and append from end to result list
+    val head = this.nodeAt(0)
+    if(head != null){
+        addInReverse(result, head)
+    }
+
+    return result
+
+
 }
 
