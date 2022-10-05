@@ -36,4 +36,15 @@ class StackImpl<T : Any> : Stack<T>{
         return storage.lastOrNull()
     }
 
+
+    companion object{
+        fun <Element : Any> create(items : Iterable<Element>) : Stack<Element>{
+            val stack = StackImpl<Element>()
+            for(item in items){
+                stack.push(item)
+            }
+            return stack
+        }
+    }
+
 }

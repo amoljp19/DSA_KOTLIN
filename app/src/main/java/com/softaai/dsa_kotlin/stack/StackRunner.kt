@@ -9,7 +9,7 @@ import com.softaai.dsa_kotlin.linkedlist.example
  */
 
 fun main(){
-    "stack using arraylist " example{
+  /*  "stack using arraylist " example{
         val stack = StackImpl<Int>()
         stack.push(2)
         stack.push(1)
@@ -22,5 +22,12 @@ fun main(){
         val popped = stack.pop()
         println("popped : $popped")
         println(stack)
+    }*/
+
+    "initialzing stack from list " example {
+        val list = listOf("A", "B", "C", "D")
+        val stack = StackImpl.create(list)
+        println(stack)
+        println("popped : ${stack.pop()}")
     }
 }
