@@ -1,5 +1,6 @@
 package com.softaai.dsa_kotlin.stack
 
+import com.softaai.dsa_kotlin.linkedlist.LinkedList
 import com.softaai.dsa_kotlin.linkedlist.example
 
 
@@ -32,11 +33,35 @@ fun main(){
         println("popped : ${stack.pop()}")
     }*/
 
-
+/*
     "initialzing stack from an array literal" example {
         val stack = stackOf(1.0, 2.0, 3.0, 4.0)
         println(stack)
         println("popped : ${stack.pop()}")
+    }*/
+
+    "print linkedlist in reverse order using stack " example {
+        val list = LinkedList<Int>()
+        list.pushAtHead(1)
+        list.pushAtHead(2)
+        list.pushAtHead(3)
+        list.pushAtHead(5)
+        list.pushAtHead(4)
+
+        println("$list")
+        list.printInReverseOrderUsingStack()
+    }
+}
+
+
+fun <T> LinkedList<T>.printInReverseOrderUsingStack(){
+    val stack = StackImpl<Int>()
+    for (item in this){
+        stack.push(item as Int)
+    }
+
+    while (!stack.isEmpty){
+        print("${stack.pop()} ")
     }
 }
 
