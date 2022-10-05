@@ -6,7 +6,16 @@ package com.softaai.dsa_kotlin.stack
  * softAai Apps.
  */
 interface Stack<T> {
+    val count : Int
+    get
+
+    val isEmpty : Boolean
+    get() = count == 0
+
     fun push(element: T)
 
     fun pop() : T
+
+    fun peek(): T?
+
 }

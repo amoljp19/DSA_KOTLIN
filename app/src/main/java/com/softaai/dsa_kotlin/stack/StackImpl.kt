@@ -22,11 +22,18 @@ class StackImpl<T : Any> : Stack<T>{
     }
 
     override fun pop(): T {
-        if(storage.size == 0){
+        if(isEmpty){
             throw Exception("stack is empty now")
         }else{
             return storage.removeAt(storage.size-1)
         }
+    }
+
+    override val count: Int
+        get() = storage.size
+
+    override fun peek(): T? {
+        return storage.lastOrNull()
     }
 
 }
