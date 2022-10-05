@@ -24,10 +24,24 @@ fun main(){
         println(stack)
     }*/
 
-    "initialzing stack from list " example {
+
+    /*"initialzing stack from list " example {
         val list = listOf("A", "B", "C", "D")
         val stack = StackImpl.create(list)
         println(stack)
         println("popped : ${stack.pop()}")
+    }*/
+
+
+    "initialzing stack from an array literal" example {
+        val stack = stackOf(1.0, 2.0, 3.0, 4.0)
+        println(stack)
+        println("popped : ${stack.pop()}")
     }
+}
+
+
+// some methods simmilar to koltin collection stack like listOf in List
+fun <Element: Any> stackOf(vararg elements: Element) : Stack<Element>{
+    return StackImpl.create(elements.asList())
 }

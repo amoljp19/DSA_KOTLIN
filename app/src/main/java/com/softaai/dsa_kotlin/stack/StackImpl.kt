@@ -37,6 +37,7 @@ class StackImpl<T : Any> : Stack<T>{
     }
 
 
+
     companion object{
         fun <Element : Any> create(items : Iterable<Element>) : Stack<Element>{
             val stack = StackImpl<Element>()
@@ -46,5 +47,7 @@ class StackImpl<T : Any> : Stack<T>{
             return stack
         }
     }
+
+
 
 }
