@@ -47,7 +47,9 @@ class StackImpl<T : Any> : Stack<T>{
             return stack
         }
     }
+}
 
-
-
+// some methods simmilar to koltin collection stack like listOf in List
+fun <Element: Any> stackOf(vararg elements: Element) : Stack<Element>{
+    return StackImpl.create(elements.asList())
 }

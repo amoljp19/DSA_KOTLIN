@@ -41,7 +41,3 @@ fun main(){
 }
 
 
-// some methods simmilar to koltin collection stack like listOf in List
-fun <Element: Any> stackOf(vararg elements: Element) : Stack<Element>{
-    return StackImpl.create(elements.asList())
-}
