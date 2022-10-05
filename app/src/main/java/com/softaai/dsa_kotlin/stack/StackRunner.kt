@@ -40,7 +40,7 @@ fun main(){
         println("popped : ${stack.pop()}")
     }*/
 
-    "print linkedlist in reverse order using stack " example {
+  /*  "print linkedlist in reverse order using stack " example {
         val list = LinkedList<Int>()
         list.pushAtHead(1)
         list.pushAtHead(2)
@@ -50,10 +50,18 @@ fun main(){
 
         println("$list")
         list.printInReverseOrderUsingStack()
+    }*/
+
+
+    "check string having balanced parentheses " example {
+        println("((())((())".checkBalancedParentheses())
+        println("((()))()hello(((())))".checkBalancedParentheses())
+        println("((()))((()))".checkBalancedParentheses())
     }
 }
 
 
+// printing list in reverse order
 fun <T> LinkedList<T>.printInReverseOrderUsingStack(){
     val stack = StackImpl<Int>()
     for (item in this){
@@ -64,5 +72,25 @@ fun <T> LinkedList<T>.printInReverseOrderUsingStack(){
         print("${stack.pop()} ")
     }
 }
+
+
+// balanced parentheses problem - check string contains balanced parentheses problem
+
+fun String.checkBalancedParentheses() : Boolean{
+    val stack = StackImpl<Char>()
+
+    for(character in this){
+        when(character){
+            '(' -> stack.push(character)
+            ')' -> if(stack.isEmpty){
+                return false
+            }else{
+                stack.pop()
+            }
+        }
+    }
+    return stack.isEmpty
+}
+
 
 
