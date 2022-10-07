@@ -12,7 +12,7 @@ interface Queue<T>{
 
     fun dequeue() : T?
 
-    var count: Int
+    val count: Int
         get
 
     val isEmpty : Boolean

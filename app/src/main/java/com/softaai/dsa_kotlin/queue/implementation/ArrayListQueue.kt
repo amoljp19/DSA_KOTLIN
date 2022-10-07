@@ -15,17 +15,14 @@ class ArrayListQueue<T> : Queue<T> {
         return true
     }
 
-    override fun dequeue(): T? {
-        return if (isEmpty) null else list.removeAt(0)
-    }
+    override fun dequeue(): T? = if (isEmpty) null else list.removeAt(0)
 
-    override var count: Int
+
+    override val count: Int
         get() = list.size
-        set(value) {}
 
-    override fun peek(): T? {
-        return list.firstOrNull()
-    }
+
+    override fun peek(): T? = list.firstOrNull()
 
     override fun toString(): String  = list.toString()
 }
