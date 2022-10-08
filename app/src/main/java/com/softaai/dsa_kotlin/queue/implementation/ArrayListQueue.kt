@@ -7,6 +7,7 @@ import com.softaai.dsa_kotlin.queue.Queue
  * Created by amoljp19 on 10/7/2022.
  * softAai Apps.
  */
+
 class ArrayListQueue<T> : Queue<T> {
     val list = arrayListOf<T>()
 
