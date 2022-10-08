@@ -2,6 +2,7 @@ package com.softaai.dsa_kotlin.queue
 
 import com.softaai.dsa_kotlin.linkedlist.example
 import com.softaai.dsa_kotlin.queue.implementation.ArrayListQueue
+import com.softaai.dsa_kotlin.queue.implementation.StackQueue
 
 
 /**
@@ -11,7 +12,7 @@ import com.softaai.dsa_kotlin.queue.implementation.ArrayListQueue
 
 fun main(){
 
-    "Queue using array list " example {
+  /*  "Queue using array list " example {
         val queue = ArrayListQueue<String>()
         queue.enqueue("amol")
         queue.enqueue("rahul")
@@ -20,6 +21,22 @@ fun main(){
         println(queue)
         println(queue.dequeue())
         println("next up : ${queue.peek()}")
+    }*/
+
+
+    "Queue using double stacks" example {
+        val queue = StackQueue<String>()
+        queue.enqueue("amol")
+        queue.enqueue("kotlin")
+        queue.enqueue("android")
+        queue.enqueue("java")
+
+        println(queue)
+        //queue.dequeue()
+        println(queue.dequeue())
+        println("next up : ${queue.peek()}" )
     }
+
+
 
 }

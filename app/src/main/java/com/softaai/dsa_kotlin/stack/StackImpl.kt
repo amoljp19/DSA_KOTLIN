@@ -1,11 +1,12 @@
 package com.softaai.dsa_kotlin.stack
 
 
+
 /**
  * Created by amoljp19 on 10/5/2022.
  * softAai Apps.
  */
-class StackImpl<T : Any> : Stack<T>{
+class StackImpl<T: Any> : Stack<T>{
 
     private val storage = arrayListOf<T>()
 
@@ -21,9 +22,9 @@ class StackImpl<T : Any> : Stack<T>{
        storage.add(element)
     }
 
-    override fun pop(): T {
+    override fun pop(): T? {
         if(isEmpty){
-            throw Exception("stack is empty now")
+            return null
         }else{
             return storage.removeAt(storage.size-1)
         }

@@ -14,7 +14,7 @@ interface Stack<T> {
 
     fun push(element: T)
 
-    fun pop() : T
+    fun pop() : T?
 
     fun peek(): T?
 
