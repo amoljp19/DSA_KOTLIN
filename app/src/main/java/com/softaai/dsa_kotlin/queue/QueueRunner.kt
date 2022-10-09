@@ -3,6 +3,8 @@ package com.softaai.dsa_kotlin.queue
 import com.softaai.dsa_kotlin.linkedlist.example
 import com.softaai.dsa_kotlin.queue.implementation.ArrayListQueue
 import com.softaai.dsa_kotlin.queue.implementation.StackQueue
+import com.softaai.dsa_kotlin.stack.Stack
+import com.softaai.dsa_kotlin.stack.StackImpl
 
 
 /**
@@ -38,7 +40,7 @@ fun main(){
     }*/
 
 
-    "nextplayer using queue" example{
+   /* "nextplayer using queue" example{
         val queue = ArrayListQueue<String>()
         queue.enqueue("amol")
         queue.enqueue("satara")
@@ -59,8 +61,23 @@ fun main(){
         println(queue.nextPlayer())
 
 
-    }
+    }*/
 
+
+    "reverse queue " example {
+        val queue = ArrayListQueue<String>()
+        queue.enqueue("amol")
+        queue.enqueue("satara")
+        queue.enqueue("rahul")
+        queue.enqueue("india")
+        queue.enqueue("pune")
+
+        println(queue)
+
+        println(queue.reverse())
+
+        println(queue)
+    }
 
 
 }
@@ -74,4 +91,20 @@ fun <T> Queue<T>.nextPlayer() : T ? {
     person?.let { this.enqueue(it) }
 
     return person
+}
+
+
+// reverse content of queues hint - stack data structure
+
+fun <T : Any> Queue<T>.reverse() : Queue<T>{
+    val st = StackImpl<T>()
+
+    while(!this.isEmpty){
+        st.push(this.dequeue()!!)
+    }
+
+    while(!st.isEmpty){
+        this.enqueue(st.pop()!!)
+    }
+    return this
 }
