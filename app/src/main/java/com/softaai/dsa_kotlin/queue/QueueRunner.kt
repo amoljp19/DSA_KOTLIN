@@ -24,7 +24,7 @@ fun main(){
     }*/
 
 
-    "Queue using double stacks" example {
+   /* "Queue using double stacks" example {
         val queue = StackQueue<String>()
         queue.enqueue("amol")
         queue.enqueue("kotlin")
@@ -35,8 +35,43 @@ fun main(){
         //queue.dequeue()
         println(queue.dequeue())
         println("next up : ${queue.peek()}" )
+    }*/
+
+
+    "nextplayer using queue" example{
+        val queue = ArrayListQueue<String>()
+        queue.enqueue("amol")
+        queue.enqueue("satara")
+        queue.enqueue("kotlin")
+        queue.enqueue("java")
+        queue.enqueue("android")
+
+        println(queue)
+        println(queue.nextPlayer())
+
+        println(queue)
+        println(queue.nextPlayer())
+
+        println(queue)
+        println(queue.nextPlayer())
+
+        println(queue)
+        println(queue.nextPlayer())
+
+
     }
 
 
 
+}
+
+
+//print nextplayer in board game
+
+fun <T> Queue<T>.nextPlayer() : T ? {
+    val person = this.dequeue()
+
+    person?.let { this.enqueue(it) }
+
+    return person
 }
