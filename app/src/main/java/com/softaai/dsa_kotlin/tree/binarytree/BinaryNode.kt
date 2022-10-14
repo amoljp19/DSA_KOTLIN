@@ -25,6 +25,12 @@ class BinaryNode<T>(val value: T) {
         rightChild?.traversePreOrder(visit)
     }
 
+    fun traversePostOrder(visit: Visitor<T>){
+        leftChild?.traversePostOrder(visit)
+        rightChild?.traversePostOrder(visit)
+        visit(value)
+    }
+
     override fun toString() = diagram(this)
 
     private fun diagram(node: BinaryNode<T>?,
