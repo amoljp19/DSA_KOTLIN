@@ -23,14 +23,16 @@ fun main(){
 
     //tree.forEachLevelOrder { println(it.value) }
 
-    tree.search("ginger ale")?.let {
+  /*  tree.search("ginger ale")?.let {
         println("found node : ${it.value}")
     }
 
     tree.search("amol")?.let {
         println(it.value)
     } ?: println("Node amol couldnt found!!")
+*/
 
+    tree.printEachLevel()
 
 }
 
