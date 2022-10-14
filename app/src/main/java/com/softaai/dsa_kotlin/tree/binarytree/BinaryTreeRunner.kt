@@ -25,7 +25,9 @@ fun main(){
 
     //println(tree)
 
-    tree.traverseInOrder { println(it) }
+    //tree.traverseInOrder { println(it) }
+
+    tree.traversePreOrder { println(it) }
 
 
 }
