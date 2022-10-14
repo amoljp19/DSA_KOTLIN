@@ -38,6 +38,19 @@ class TreeNode<T>(val value: T){
             node = queue.dequeue()
         }
     }
+
+
+    fun search(value: T) : TreeNode<T>?{
+        var result : TreeNode<T>? = null
+
+        forEachLevelOrder {
+           if(value == it.value){
+               result = it
+           }
+        }
+
+        return result
+    }
 }
 
 
