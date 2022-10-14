@@ -23,6 +23,9 @@ fun main(){
 
     val tree = seven
 
-    println(tree)
+    //println(tree)
+
+    tree.traverseInOrder { println(it) }
+
 
 }

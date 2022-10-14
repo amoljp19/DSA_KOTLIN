@@ -13,7 +13,15 @@ class BinaryNode<T>(val value: T) {
     var rightChild: BinaryNode<T>? = null
 
 
+    fun traverseInOrder(visit: Visitor<T>){
+        leftChild?.traverseInOrder(visit)
+        visit(value)
+        rightChild?.traverseInOrder(visit)
+    }
+
+
     override fun toString() = diagram(this)
+
     private fun diagram(node: BinaryNode<T>?,
                         top: String = "",
                         root: String = "",
