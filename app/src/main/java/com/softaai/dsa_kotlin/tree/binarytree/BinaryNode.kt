@@ -1,5 +1,7 @@
 package com.softaai.dsa_kotlin.tree.binarytree
 
+import java.lang.Integer.max
+
 
 /**
  * Created by amoljp19 on 10/14/2022.
@@ -29,6 +31,12 @@ class BinaryNode<T>(val value: T) {
         leftChild?.traversePostOrder(visit)
         rightChild?.traversePostOrder(visit)
         visit(value)
+    }
+
+    fun height(node: BinaryNode<T>? = this) : Int{
+        return node?.let {
+            1 + max(height(node.leftChild), height(node.rightChild))
+        } ?: -1
     }
 
     override fun toString() = diagram(this)

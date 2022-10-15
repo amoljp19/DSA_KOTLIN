@@ -29,7 +29,9 @@ fun main(){
 
     //tree.traversePreOrder { println(it) }
 
-    tree.traversePostOrder { println(it) }
+    //tree.traversePostOrder { println(it) }
+
+    println(tree.height())
 
 
 }
