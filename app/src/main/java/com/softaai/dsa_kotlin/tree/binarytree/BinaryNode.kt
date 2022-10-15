@@ -39,6 +39,56 @@ class BinaryNode<T>(val value: T) {
         } ?: -1
     }
 
+    fun traversePreOrderWithNull(visit: Visitor<T?>){
+        visit(value)
+        leftChild?.traversePreOrderWithNull(visit) ?: visit(null)
+        rightChild?.traversePreOrderWithNull(visit) ?: visit(null)
+    }
+
+    fun serialize(node: BinaryNode<T> = this) : MutableList<T?>{
+        val list = mutableListOf<T?>()
+        node.traversePreOrderWithNull { list.add(it) }
+        return list
+    }
+
+    fun deserialize(list: MutableList<T?>) : BinaryNode<T?>?{
+
+        val rootValue = list.removeAt(0) ?: return null    // due to list.removeAt(0) time complexity is O(n^2)
+
+        val root = BinaryNode<T?>(rootValue)
+
+        root.leftChild = deserialize(list)
+        root.rightChild = deserialize(list)
+
+        return root
+    }
+
+
+    fun deserializeForOptimization(list: MutableList<T?>) : BinaryNode<T?>?{
+
+        /*
+        we optimized time complexity of this function to O(n) using list.removeAt(list.size-1), but how ? answer is removeAt(0) in above function  is an O(n)
+        operation because, after every removal, every element after the removed element
+        must shift left to take up the missing space. In contrast, list.removeAt(list.size
+        - 1) is an O(1) operation.
+        */
+
+        val rootValue = list.removeAt(list.size - 1) ?: return null
+
+        val root = BinaryNode<T?>(rootValue)
+
+        root.leftChild = deserializeForOptimization(list)
+        root.rightChild = deserializeForOptimization(list)
+
+        return root
+    }
+
+
+    fun deserializeOptimized(list: MutableList<T?>): BinaryNode<T?>?
+    {
+        return deserializeForOptimization(list.asReversed())
+    }
+
     override fun toString() = diagram(this)
 
     private fun diagram(node: BinaryNode<T>?,

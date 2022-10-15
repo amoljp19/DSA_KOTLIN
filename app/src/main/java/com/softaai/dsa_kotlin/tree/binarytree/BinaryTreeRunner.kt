@@ -31,7 +31,11 @@ fun main(){
 
     //tree.traversePostOrder { println(it) }
 
-    println(tree.height())
+    //println(tree.height())
+
+    println(tree)
+    val list = tree.serialize()
+    println(tree.deserializeOptimized(list))
 
 
 }
