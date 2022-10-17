@@ -32,9 +32,17 @@ fun main(){
         println(exampleTree)
     }*/
 
-    "finding elements in BST " example {
+  /*  "finding elements in BST " example {
         if (exampleTree.contains(5)){
             println("found 5 in bst")
+        } else {
+            println("not found element")
+        }
+    }*/
+
+    "finding elements in BST using optimized way of O(log n) " example {
+        if(exampleTree.optimizedContains(5)){
+            println("found 5 in BST")
         } else {
             println("not found element")
         }

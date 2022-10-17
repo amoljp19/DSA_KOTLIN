@@ -41,6 +41,23 @@ class BinarySearchTree<T : Comparable<T>> {
         return found
     }
 
+    fun optimizedContains(value : T) : Boolean{
+        var current = root
+
+        while (current != null){
+            if(current.value == value){
+                return true
+            }
+
+           current = if(value < current.value){
+                 current.leftChild
+            }else{
+                 current.rightChild
+            }
+        }
+        return false
+    }
+
     override fun toString(): String = root?.toString() ?: "empty tree"
 }
 
