@@ -29,6 +29,18 @@ class BinarySearchTree<T : Comparable<T>> {
         return node
     }
 
+    fun contains(value : T) : Boolean{
+        root ?: return false
+
+        var found = false
+        root?.traverseInOrder {
+            if (value == it){
+                found = true
+            }
+         }
+        return found
+    }
+
     override fun toString(): String = root?.toString() ?: "empty tree"
 }
 

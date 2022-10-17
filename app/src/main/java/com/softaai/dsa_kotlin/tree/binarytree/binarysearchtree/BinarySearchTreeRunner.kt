@@ -10,14 +10,14 @@ import com.softaai.dsa_kotlin.linkedlist.example
 
 fun main(){
 
-    "building bst " example {
+    /*"building bst " example {
         val bst = BinarySearchTree<Int>()
         (1..4).forEach{
             bst.insert(it)
         }
         println(bst)
     }
-
+*/
     val exampleTree = BinarySearchTree<Int>()
 
     exampleTree.insert(3)
@@ -28,7 +28,15 @@ fun main(){
     exampleTree.insert(5)
 
 
-    "building a BST" example {
+    /*"building a BST" example {
         println(exampleTree)
+    }*/
+
+    "finding elements in BST " example {
+        if (exampleTree.contains(5)){
+            println("found 5 in bst")
+        } else {
+            println("not found element")
+        }
     }
 }
