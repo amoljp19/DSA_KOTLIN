@@ -48,11 +48,16 @@ fun main(){
         }
     }*/
 
-    "removing a node" example {
+   /* "removing a node" example {
         println("Tree before removal:")
         println(exampleTree)
         exampleTree.remove(3)
         println("Tree after removing root:")
         println(exampleTree)
+    }*/
+
+
+    "isBinarySearchTree " example {
+       println(exampleTree.root?.isBinarySearchTree) //it will give you always true, if you edit above bst as non bst because it finally it will build valid bst only
     }
 }

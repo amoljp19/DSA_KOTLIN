@@ -9,13 +9,33 @@ import java.lang.Integer.max
  */
 
 typealias Visitor<T> = (T) -> Unit
-class BinaryNode<T>(var value: T) {
+class BinaryNode<T : Comparable<T>>(var value: T) {
 
     var leftChild: BinaryNode<T>? = null
     var rightChild: BinaryNode<T>? = null
 
     val min: BinaryNode<T>
        get() = leftChild?.min ?: this
+
+    val isBinarySearchTree : Boolean
+       get() = isBst(this, min = null, max = null)
+
+
+    private fun isBst(tree: BinaryNode<T>?, min : T?,  max: T?) : Boolean{
+        tree ?: return true
+
+        //println("" + (tree.value <= min))
+
+        if (min != null && tree.value <= min){
+            return false
+        }
+
+        if (max != null && tree.value > max){
+            return false
+        }
+
+        return isBst(tree.leftChild, min, tree.value) && isBst(tree.rightChild, tree.value, max)
+    }
 
 
     fun traverseInOrder(visit: Visitor<T>){
@@ -54,11 +74,11 @@ class BinaryNode<T>(var value: T) {
         return list
     }
 
-    fun deserialize(list: MutableList<T?>) : BinaryNode<T?>?{
+    fun deserialize(list: MutableList<T?>) : BinaryNode<T>?{
 
         val rootValue = list.removeAt(0) ?: return null    // due to list.removeAt(0) time complexity is O(n^2)
 
-        val root = BinaryNode<T?>(rootValue)
+        val root = BinaryNode<T>(rootValue)
 
         root.leftChild = deserialize(list)
         root.rightChild = deserialize(list)
@@ -67,7 +87,7 @@ class BinaryNode<T>(var value: T) {
     }
 
 
-    fun deserializeForOptimization(list: MutableList<T?>) : BinaryNode<T?>?{
+    fun deserializeForOptimization(list: MutableList<T?>) : BinaryNode<T>?{
 
         /*
         we optimized time complexity of this function to O(n) using list.removeAt(list.size-1), but how ? answer is removeAt(0) in above function  is an O(n)
@@ -78,7 +98,7 @@ class BinaryNode<T>(var value: T) {
 
         val rootValue = list.removeAt(list.size - 1) ?: return null
 
-        val root = BinaryNode<T?>(rootValue)
+        val root = BinaryNode<T>(rootValue)
 
         root.leftChild = deserializeForOptimization(list)
         root.rightChild = deserializeForOptimization(list)
@@ -87,7 +107,7 @@ class BinaryNode<T>(var value: T) {
     }
 
 
-    fun deserializeOptimized(list: MutableList<T?>): BinaryNode<T?>?
+    fun deserializeOptimized(list: MutableList<T?>): BinaryNode<T>?
     {
         return deserializeForOptimization(list.asReversed())
     }
@@ -111,3 +131,5 @@ class BinaryNode<T>(var value: T) {
     }
 
 }
+
+

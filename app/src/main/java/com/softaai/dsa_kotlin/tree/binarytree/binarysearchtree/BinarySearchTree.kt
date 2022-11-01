@@ -18,7 +18,7 @@ class BinarySearchTree<T : Comparable<T>> {
     }
 
     private fun insert(node : BinaryNode<T>?, value: T) : BinaryNode<T>{
-        node ?: return BinaryNode(value)
+        node ?: return BinaryNode<T>(value)
 
         if(value < node.value){
             node.leftChild = insert(node.leftChild, value)
