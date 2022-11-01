@@ -40,11 +40,19 @@ fun main(){
         }
     }*/
 
-    "finding elements in BST using optimized way of O(log n) " example {
+   /* "finding elements in BST using optimized way of O(log n) " example {
         if(exampleTree.optimizedContains(5)){
             println("found 5 in BST")
         } else {
             println("not found element")
         }
+    }*/
+
+    "removing a node" example {
+        println("Tree before removal:")
+        println(exampleTree)
+        exampleTree.remove(3)
+        println("Tree after removing root:")
+        println(exampleTree)
     }
 }

@@ -9,10 +9,13 @@ import java.lang.Integer.max
  */
 
 typealias Visitor<T> = (T) -> Unit
-class BinaryNode<T>(val value: T) {
+class BinaryNode<T>(var value: T) {
 
     var leftChild: BinaryNode<T>? = null
     var rightChild: BinaryNode<T>? = null
+
+    val min: BinaryNode<T>
+       get() = leftChild?.min ?: this
 
 
     fun traverseInOrder(visit: Visitor<T>){

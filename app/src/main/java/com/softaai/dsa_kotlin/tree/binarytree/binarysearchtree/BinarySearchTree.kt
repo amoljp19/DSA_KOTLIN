@@ -58,6 +58,43 @@ class BinarySearchTree<T : Comparable<T>> {
         return false
     }
 
+    fun remove(value: T){
+        root = remove(root, value)
+    }
+
+    private fun remove(node: BinaryNode<T>?, value: T): BinaryNode<T>? {
+        node ?: return null
+
+        when{
+            value == node.value -> {
+                if (node.leftChild == null && node.rightChild == null){
+                    return null
+                }
+
+                if(node.leftChild == null){
+                    return node.rightChild
+                }
+
+                if(node.rightChild == null){
+                    return node.leftChild
+                }
+
+                node.rightChild?.min?.value?.let {
+                    node.value = it
+                }
+
+                node.rightChild = remove(node.rightChild, node.value)
+
+            }
+
+            value < node.value ->  node.leftChild = remove(node.leftChild, value)
+
+            else -> node.rightChild = remove(node.rightChild, value)
+        }
+
+        return node
+    }
+
     override fun toString(): String = root?.toString() ?: "empty tree"
 }
 
