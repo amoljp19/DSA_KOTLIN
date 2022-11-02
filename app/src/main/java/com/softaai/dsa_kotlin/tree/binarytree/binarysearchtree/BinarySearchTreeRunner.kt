@@ -28,6 +28,8 @@ fun main(){
     exampleTree.insert(5)
 
 
+
+
     /*"building a BST" example {
         println(exampleTree)
     }*/
@@ -57,7 +59,21 @@ fun main(){
     }*/
 
 
-    "isBinarySearchTree " example {
+    /*"isBinarySearchTree " example {
        println(exampleTree.root?.isBinarySearchTree) //it will give you always true, if you edit above bst as non bst because it finally it will build valid bst only
+    }*/
+
+
+    val exampleTree1 = BinarySearchTree<Int>()
+
+    exampleTree1.insert(3)
+    exampleTree1.insert(1)
+    exampleTree1.insert(4)
+    exampleTree1.insert(0)
+    exampleTree1.insert(2)
+    exampleTree1.insert(5)
+
+    "isBinarySearchTreeEquals " example {
+        println(exampleTree.equals(exampleTree1.root))   // here we need to pass other tree root
     }
 }

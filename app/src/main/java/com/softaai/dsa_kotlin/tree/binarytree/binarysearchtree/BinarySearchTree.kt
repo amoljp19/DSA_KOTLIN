@@ -96,6 +96,15 @@ class BinarySearchTree<T : Comparable<T>> {
     }
 
     override fun toString(): String = root?.toString() ?: "empty tree"
+
+    override fun equals(other: Any?): Boolean {
+        return if (other != null && other is BinaryNode<*>){
+              this.root?.value == other.value && this.root?.leftChild?.value == other.leftChild?.value && this.root?.rightChild?.value == other.rightChild?.value
+        }
+        else{
+            false
+        }
+    }
 }
 
 
