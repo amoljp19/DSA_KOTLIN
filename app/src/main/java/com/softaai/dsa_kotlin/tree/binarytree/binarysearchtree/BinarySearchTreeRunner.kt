@@ -67,13 +67,16 @@ fun main(){
     val exampleTree1 = BinarySearchTree<Int>()
 
     exampleTree1.insert(3)
-    exampleTree1.insert(1)
+    exampleTree1.insert(2)
     exampleTree1.insert(4)
     exampleTree1.insert(0)
-    exampleTree1.insert(2)
     exampleTree1.insert(5)
 
-    "isBinarySearchTreeEquals " example {
+    /*"isBinarySearchTreeEquals " example {
         println(exampleTree.equals(exampleTree1.root))   // here we need to pass other tree root
+    }*/
+
+    "is BST contains all elements of another bst " example {
+        println(exampleTree.containsElements(exampleTree1))
     }
 }
