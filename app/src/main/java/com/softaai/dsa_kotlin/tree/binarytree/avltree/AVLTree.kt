@@ -1,6 +1,7 @@
 package com.softaai.dsa_kotlin.tree.binarytree.avltree
 
 import com.softaai.dsa_kotlin.tree.binarytree.BinaryNode
+import kotlin.math.max
 
 
 /**
@@ -31,7 +32,7 @@ class AVLTree<T : Comparable<T>>{
 
 
 
-    fun leftRotation(node : AVLNode<T>?) : AVLNode<T>{
+    private fun leftRotation(node : AVLNode<T>?) : AVLNode<T>{
 
         val pivote = node?.rightChild!!
 
@@ -43,5 +44,18 @@ class AVLTree<T : Comparable<T>>{
         pivote.height = maxOf(pivote.leftHeight, pivote.rightHeight) + 1
 
         return pivote     // why we returning only pivote beacause its becoming new root of AVL Tree
+    }
+
+    private fun rightRotation(node: AVLNode<T>) : AVLNode<T>{
+        val pivote = node.leftChild!!
+
+        node.leftChild = pivote.rightChild
+
+        pivote.rightChild = node
+
+        node.height = maxOf(node.leftHeight, node.rightHeight) + 1
+        pivote.height = maxOf(pivote.leftHeight, pivote.rightHeight) + 1
+
+        return pivote
     }
 }
