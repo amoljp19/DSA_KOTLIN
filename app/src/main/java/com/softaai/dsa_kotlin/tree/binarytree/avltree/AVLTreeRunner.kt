@@ -11,17 +11,15 @@ import com.softaai.dsa_kotlin.tree.binarytree.binarysearchtree.BinarySearchTree
 
 fun main(){
 
-    val imbalancedAVL = AVLTree<Int>()
+    "repeated insertions in sequence " example {
+        val tree = AVLTree<Int>()
 
-    imbalancedAVL.insert(50)
-    imbalancedAVL.insert(25)
-    imbalancedAVL.insert(75)
-    imbalancedAVL.insert(37)
-    imbalancedAVL.insert(40)
+        (0..14).forEach {
+            tree.insert(it)
+        }
 
+        println(tree.root)
 
-   /* "left rotation of imbalanced binary search tree" example {
-        println("before left rotation tree : " + imbalancedAVL.root.toString())
-        println("after left rotation tree is : " + imbalancedAVL.leftRotation(imbalancedAVL.root).toString())
-    }*/
+    }
+
 }

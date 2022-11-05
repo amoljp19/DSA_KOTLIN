@@ -24,7 +24,11 @@ class AVLTree<T : Comparable<T>> {
             node.rightChild = insert(node.rightChild, value)
         }
 
-        return node
+        val balancedNode = balanced(node)
+
+        balancedNode.height = maxOf(balancedNode.leftHeight, balancedNode.rightHeight ) + 1
+
+        return balancedNode
     }
 
 
