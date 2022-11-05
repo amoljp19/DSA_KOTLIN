@@ -1,7 +1,6 @@
 package com.softaai.dsa_kotlin.tree.binarytree.avltree
 
 import com.softaai.dsa_kotlin.linkedlist.example
-import com.softaai.dsa_kotlin.tree.binarytree.binarysearchtree.BinarySearchTree
 
 
 /**
@@ -23,23 +22,37 @@ fun main(){
     }*/
 
 
-    val avlTree = AVLTree<Int>()
+  /*  val avlTree = AVLTree<Int>()
 
     avlTree.insert(15)
     avlTree.insert(10)
     avlTree.insert(16)
-    avlTree.insert(18)
+    avlTree.insert(18)*/
 
-    println(avlTree.root)
+    //println(avlTree.root)
     //avlTree.remove(10)
     //println(avlTree.root)
 
 
     // Note - below function answers are independent of above avlTree, I just wrote all below utility function in that class so accessing using that instance
-    
+
     /*println(avlTree.leafNodes(3))
 
     println(avlTree.totalNodesCount(3))*/
+
+
+    "using TraversalBinaryNode " example{
+        val tree = AVLTree<Int>()
+
+        (0..14).forEach {
+            tree.insert(it)
+        }
+
+        println(tree.root)
+
+        tree.root?.traverseInOrder { println(it) }
+
+    }
 
 
 }

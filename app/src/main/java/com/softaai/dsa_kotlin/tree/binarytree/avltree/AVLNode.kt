@@ -3,14 +3,22 @@ package com.softaai.dsa_kotlin.tree.binarytree.avltree
 import com.softaai.dsa_kotlin.tree.binarytree.BinaryNode
 
 
+
+
 /**
  * Created by amoljp19 on 11/3/2022.
  * softAai Apps.
  */
-class AVLNode<T : Comparable<T>>(var value: T) {
 
-    var leftChild: AVLNode<T>? = null
-    var rightChild: AVLNode<T>? = null
+// as here we are passing self as AVLNode<T> because AVLNode extends TraversalBinaryNode so it has
+// relation so finally it is of type TravarsalBinaryNode<self : TraversalBinaryNode<self, T>>
+
+typealias Visitor<T> = (T) -> Unit
+
+class AVLNode<T : Comparable<T>> (value: T) : TraversalBinaryNode<AVLNode<T>, T>(value) {
+
+    // var leftChild: AVLNode<T>? = null
+    // var rightChild: AVLNode<T>? = null
 
     var height = 0
 
@@ -44,4 +52,5 @@ class AVLNode<T : Comparable<T>>(var value: T) {
             }
         } ?: "${root}null\n"
     }
+
 }

@@ -1,6 +1,5 @@
 package com.softaai.dsa_kotlin.tree.binarytree.avltree
 
-import com.softaai.dsa_kotlin.tree.binarytree.BinaryNode
 import kotlin.math.pow
 
 
