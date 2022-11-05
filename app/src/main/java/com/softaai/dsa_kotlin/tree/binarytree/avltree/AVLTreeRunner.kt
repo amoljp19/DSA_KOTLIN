@@ -31,8 +31,11 @@ fun main(){
     avlTree.insert(18)
 
     println(avlTree.root)
-    avlTree.remove(10)
-    println(avlTree.root)
+    //avlTree.remove(10)
+    //println(avlTree.root)
+
+
+    //println(avlTree.leafNodes(3))
 
 
 }

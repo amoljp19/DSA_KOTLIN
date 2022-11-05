@@ -1,6 +1,7 @@
 package com.softaai.dsa_kotlin.tree.binarytree.avltree
 
 import com.softaai.dsa_kotlin.tree.binarytree.BinaryNode
+import kotlin.math.pow
 
 
 /**
@@ -139,5 +140,23 @@ class AVLTree<T : Comparable<T>> {
             }
             else -> node
         }
+    }
+
+    //challenges
+
+    /*
+         How many leaf nodes are there in a perfectly balanced tree of height 3? What about
+         a perfectly balanced tree of height h?
+
+         answer - I feel it will be leaf node count = 2^h, so 8
+     */
+
+   /* val leafNodesCount : Int
+       get() = Math.pow(2.0, root?.height?.toDouble()!!).toInt()
+*/
+    // or
+
+    fun leafNodes(height : Int) : Int{
+         return 2.0.pow(height).toInt()
     }
 }
