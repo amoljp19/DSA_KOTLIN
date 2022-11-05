@@ -35,7 +35,11 @@ fun main(){
     //println(avlTree.root)
 
 
-    //println(avlTree.leafNodes(3))
+    // Note - below function answers are independent of above avlTree, I just wrote all below utility function in that class so accessing using that instance
+    
+    /*println(avlTree.leafNodes(3))
+
+    println(avlTree.totalNodesCount(3))*/
 
 
 }

@@ -145,7 +145,7 @@ class AVLTree<T : Comparable<T>> {
     //challenges
 
     /*
-         How many leaf nodes are there in a perfectly balanced tree of height 3? What about
+       1. How many leaf nodes are there in a perfectly balanced tree of height 3? What about
          a perfectly balanced tree of height h?
 
          answer - I feel it will be leaf node count = 2^h, so 8
@@ -159,4 +159,42 @@ class AVLTree<T : Comparable<T>> {
     fun leafNodes(height : Int) : Int{
          return 2.0.pow(height).toInt()
     }
+
+
+    /*
+        2. How many nodes are there in a perfectly balanced tree of height 3? What about a
+           perfectly balanced tree of height h?
+
+           answer - 16 8 4 2 1
+
+           2(2^h) - 1, so h=1 -> 3, h=2 -> 7, h=3 -> 15
+     */
+
+    fun totalNodesCount(height: Int) : Int{
+        return 2.0.pow(height + 1).toInt() - 1
+
+        //( 2 * ( 2.0.pow(height).toInt() ) - 1 )      // mine logic and its working fine
+        // above both logic gives answer in O(1)
+    }
+
+    // time compexity is O(height)
+    fun nodes(height: Int): Int {
+        var totalNodes = 0
+        (0..height).forEach { currentHeight ->
+            totalNodes += 2.0.pow(currentHeight).toInt()
+        }
+        return totalNodes
+    }
+
+    /*
+     dry run above function
+
+     h=3 tn = 0
+     so 0 .. 3
+     h = 0  -> tn = 0 + 1
+     h = 1 -> tn = 1 + 2
+     h = 2 -> tn = 3 + 4
+     h = 3 -> tn = 7 + 8
+
+    * */
 }
