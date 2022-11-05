@@ -24,6 +24,8 @@ class AVLNode<T : Comparable<T>>(var value: T) {
     val balanceFactor: Int
         get() = leftHeight - rightHeight
 
+    val min : AVLNode<T>
+        get() = leftChild?.min ?: this
 
     override fun toString() = diagram(this)
 

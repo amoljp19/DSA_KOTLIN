@@ -1,5 +1,7 @@
 package com.softaai.dsa_kotlin.tree.binarytree.avltree
 
+import com.softaai.dsa_kotlin.tree.binarytree.BinaryNode
+
 
 /**
  * Created by amoljp19 on 11/3/2022.
@@ -30,6 +32,47 @@ class AVLTree<T : Comparable<T>> {
 
         return balancedNode
     }
+
+    fun remove(value: T){
+        root = remove(root, value)
+    }
+
+    private fun remove(node: AVLNode<T>?, value: T): AVLNode<T>? {
+        node ?: return null
+
+        when{
+            value == node.value -> {
+                if (node.leftChild == null && node.rightChild == null){
+                    return null
+                }
+
+                if(node.leftChild == null){
+                    return node.rightChild
+                }
+
+                if(node.rightChild == null){
+                    return node.leftChild
+                }
+
+                node.rightChild?.min?.value?.let {
+                    node.value = it
+                }
+
+                node.rightChild = remove(node.rightChild, node.value)
+
+            }
+
+            value < node.value ->  node.leftChild = remove(node.leftChild, value)
+
+            else -> node.rightChild = remove(node.rightChild, value)
+        }
+
+        val balancedNode = balanced(node)
+        balancedNode.height = maxOf(balancedNode.leftHeight, balancedNode.rightHeight) + 1
+
+        return balancedNode
+    }
+
 
 
     private fun leftRotation(node: AVLNode<T>?): AVLNode<T> {
