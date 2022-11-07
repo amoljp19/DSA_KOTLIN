@@ -19,10 +19,30 @@ fun main(){
 
     }*/
 
-    "trie insert and contains using extentions functions " example {
+   /* "trie insert and contains using extentions functions " example {
         val trie = Trie<Char>()
         trie.insert("cute")
         println("cute in trie : " + trie.contains("cute"))
 
+    }*/
+
+    "trie remove " example{
+        val trie = Trie<Char>()
+        trie.insert("cut")
+        trie.insert("cute")
+
+        println("\n*** Before removing ***")
+        assert(trie.contains("cut"))
+        println("\"cut\" is in the trie " + trie.contains("cut"))
+        assert(trie.contains("cute"))
+        println("\"cute\" is in the trie " + trie.contains("cute"))
+
+        println("\n*** After removing cut and cute ***")
+        trie.remove("cut")
+        assert(!trie.contains("cut"))
+        println("\"cut\" is in the trie " + trie.contains("cut"))
+        assert(trie.contains("cute"))
+        //trie.remove("cute")
+        println("\"cute\" is still in the trie " + trie.contains("cute"))
     }
 }

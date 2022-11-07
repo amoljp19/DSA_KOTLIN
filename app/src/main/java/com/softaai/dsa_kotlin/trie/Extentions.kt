@@ -13,3 +13,7 @@ fun Trie<Char>.insert(str:String){
 fun Trie<Char>.contains(str: String) : Boolean{
    return contains(str.toList())
 }
+
+fun Trie<Char>.remove(str : String) {
+    remove(str.toList())
+}
