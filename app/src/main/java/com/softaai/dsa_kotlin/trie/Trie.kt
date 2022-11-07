@@ -11,6 +11,7 @@ class Trie<Key : Any> {
 
     private val root = TrieNode<Key>(key = null, parent = null)
 
+
     fun insert(list : List<Key>){
         var current = root
         list.forEach { element ->
@@ -32,10 +33,12 @@ class Trie<Key : Any> {
         var current = root
 
         list.forEach { element ->
-            val child = current.children[element] ?: return false    // if you return new trienode when it null that time by default false value we get as return ultimately 
+            val child = current.children[element] ?: return false    // if you return new trienode when it null that time by default false value we get as return ultimately
             current = child
         }
 
         return current.isTerminating
     }
+
+
 }

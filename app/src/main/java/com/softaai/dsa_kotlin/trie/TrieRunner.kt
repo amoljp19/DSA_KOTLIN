@@ -10,12 +10,19 @@ import com.softaai.dsa_kotlin.linkedlist.example
 
 fun main(){
 
-    "trie insert and contains " example {
+   /* "trie insert and contains " example {
 
         val trie = Trie<Char>()
 
         trie.insert("amol".toList())
         println("does trie conatains amol : " + trie.contains("amol".toList()))
+
+    }*/
+
+    "trie insert and contains using extentions functions " example {
+        val trie = Trie<Char>()
+        trie.insert("cute")
+        println("cute in trie : " + trie.contains("cute"))
 
     }
 }
