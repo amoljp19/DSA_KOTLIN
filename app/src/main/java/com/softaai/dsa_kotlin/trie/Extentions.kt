@@ -17,3 +17,7 @@ fun Trie<Char>.contains(str: String) : Boolean{
 fun Trie<Char>.remove(str : String) {
     remove(str.toList())
 }
+
+fun Trie<Char>.collections(prefix: String): List<String> {
+    return collection(prefix.toList()).map { it.joinToString(separator = "") }
+}

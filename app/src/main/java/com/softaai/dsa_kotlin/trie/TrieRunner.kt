@@ -1,5 +1,6 @@
 package com.softaai.dsa_kotlin.trie
 
+import android.provider.SyncStateContract.Helpers.insert
 import com.softaai.dsa_kotlin.linkedlist.example
 
 
@@ -26,7 +27,7 @@ fun main(){
 
     }*/
 
-    "trie remove " example{
+   /* "trie remove " example{
         val trie = Trie<Char>()
         trie.insert("cut")
         trie.insert("cute")
@@ -44,5 +45,28 @@ fun main(){
         assert(trie.contains("cute"))
         //trie.remove("cute")
         println("\"cute\" is still in the trie " + trie.contains("cute"))
+    }*/
+
+
+    "trie prefix matching " example {
+        val trie = Trie<Char>().apply {
+            insert("car")
+            insert("card")
+            insert("care")
+            insert("cared")
+            insert("cars")
+            insert("carbs")
+            insert("carapace")
+            insert("cargo")
+        }
+
+        println("\nCollections starting with \"car\"")
+        val prefixedWithCar = trie.collections("car")
+        println(prefixedWithCar)
+        println("\nCollections starting with \"care\"")
+        val prefixedWithCare = trie.collections("care")
+        println(prefixedWithCare)
+
+
     }
 }
