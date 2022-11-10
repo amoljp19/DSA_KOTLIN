@@ -11,6 +11,19 @@ class Trie<Key : Any> {
 
     private val root = TrieNode<Key>(key = null, parent = null)
 
+    // challeng implementation for list, count and isEmpty()
+
+    private val storedLists: MutableSet<List<Key>> = mutableSetOf()
+
+    val lists : List<List<Key>>
+       get() = storedLists.toList()
+
+    val count : Int
+     get() = storedLists.size
+
+    val isEmpty : Boolean
+     get() = storedLists.isEmpty()
+
 
 
     fun insert(list : List<Key>){
@@ -27,6 +40,7 @@ class Trie<Key : Any> {
         }
 
         current.isTerminating = true
+        storedLists.add(list)
     }
 
 
@@ -55,23 +69,19 @@ class Trie<Key : Any> {
     fun remove(list : List<Key>){
 
         var current = root
-        println("1 " + list.toString())
         list.forEach {
-            println("in for loop " + it)
             val child = current.children[it] ?: return
             current = child
         }
-        println("2 " + current.key + " " + current.isTerminating)
 
         if(!current.isTerminating) return
 
         current.isTerminating = false
+        storedLists.remove(list)
 
         val parent = current.parent
-        println("3 " + parent?.key)
 
         while(parent != null && current.children.isEmpty() && !current.isTerminating){
-            println("in while loop " + parent.key + " " + parent.children + " " + current.key )
 
             parent.children.remove(current.key)
             current = parent

@@ -1,6 +1,7 @@
 package com.softaai.dsa_kotlin.trie
 
 import android.provider.SyncStateContract.Helpers.insert
+import android.system.Os.remove
 import com.softaai.dsa_kotlin.linkedlist.example
 
 
@@ -48,7 +49,7 @@ fun main(){
     }*/
 
 
-    "trie prefix matching " example {
+   /* "trie prefix matching " example {
         val trie = Trie<Char>().apply {
             insert("car")
             insert("card")
@@ -67,6 +68,21 @@ fun main(){
         val prefixedWithCare = trie.collections("care")
         println(prefixedWithCare)
 
+
+    }*/
+
+
+    "trie contains list, its count and isEmpty() implementation" example {
+        val trie = Trie<Char>()
+
+        trie.insert("car")
+        trie.insert("card")
+        trie.insert("care")
+
+        println("lists in trie : " + trie.lists)
+        trie.remove("card")
+        println("after removing apple list count in trie "+ trie.count)
+        println("isEmpty() trie now : " + trie.isEmpty)
 
     }
 }
