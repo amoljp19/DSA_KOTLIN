@@ -10,7 +10,7 @@ import com.softaai.dsa_kotlin.linkedlist.example
 
 fun main(){
 
-  "binary search " example {
+  /*"binary search " example {
 
       val array = arrayListOf(1, 5, 15, 17, 19, 22, 24, 31, 105, 150)
 
@@ -21,6 +21,13 @@ fun main(){
 
       println("binary search : $binarySearch31")
 
-  }
+  }*/
+
+
+    "binary search for a range" example {
+        val array = arrayListOf(1, 2, 3, 3, 3, 4, 5, 5)
+        val indices = array.findIndices(5)
+        println(indices)
+    }
 
 }
