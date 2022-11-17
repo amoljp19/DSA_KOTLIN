@@ -143,6 +143,19 @@ abstract class AbstractHeap<Element> : Heap<Element>{
         return null
     }
 
+    override fun merge(heap: AbstractHeap<Element>) {
+        elements.addAll(heap.elements)
+        buildHeap()
+    }
+
+    fun buildHeap() {
+        if (!elements.isEmpty()){
+            (count / 2 downTo 0).forEach {
+                shiftDown(it)
+            }
+        }
+    }
+
 
     abstract fun compare(a: Element, b: Element) : Int
 
