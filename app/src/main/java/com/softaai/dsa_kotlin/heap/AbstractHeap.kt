@@ -1,5 +1,6 @@
 package com.softaai.dsa_kotlin.heap
 
+import android.sax.Element
 import android.sax.ElementListener
 import kotlinx.coroutines.NonDisposableHandle
 import kotlinx.coroutines.NonDisposableHandle.parent
@@ -117,6 +118,16 @@ abstract class AbstractHeap<Element> : Heap<Element>{
         return null
     }
 
+
+   protected fun heapify(value: ArrayList<Element>){
+        elements = value
+        if (!elements.isEmpty()){
+            (count/2 downTo 0).forEach {
+                shiftDown(it)
+            }
+        }
+    }
+
     abstract fun compare(a: Element, b: Element) : Int
 }
 
@@ -126,6 +137,17 @@ abstract class AbstractHeap<Element> : Heap<Element>{
 class ComparableHeapImpl<Element : Comparable<Element>> : AbstractHeap<Element>(){
 
     override fun compare(a: Element, b: Element): Int = a.compareTo(b)
+
+    companion object{
+        fun <Element : Comparable<Element>> create(
+            elements : ArrayList<Element>
+        ) : Heap<Element>{
+            val heap = ComparableHeapImpl<Element>()
+            heap.heapify(elements)
+            return heap
+        }
+    }
+
 
 }
 
@@ -138,5 +160,20 @@ class ComparatorHeapImpl<Element>(
 ) : AbstractHeap<Element>(){
 
     override fun compare(a: Element, b: Element): Int = comparator.compare(a, b)
+
+    companion object{
+
+        fun <Element : Any> create(
+            elements : ArrayList<Element>,
+            comparator: Comparator<Element>
+        ) : Heap<Element> {
+            val heap = ComparatorHeapImpl(comparator)
+            heap.heapify(elements)
+            return heap
+        }
+
+
+
+    }
 
 }
