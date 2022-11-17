@@ -45,7 +45,7 @@ abstract class AbstractHeap<Element> : Heap<Element>{
     }
 
 
-    override fun remove(index: Int): Element? {
+    override fun remove(): Element? {
         if (isEmpty) return null
 
         Collections.swap(elements, 0, count-1 )
@@ -78,6 +78,21 @@ abstract class AbstractHeap<Element> : Heap<Element>{
             parent = candidate
         }
 
+    }
+
+
+    override fun remove(index: Int): Element? {
+        if(index >= count) return null
+
+        return if (index == count -1){
+            elements.removeAt(index)
+        }else{
+            Collections.swap(elements, index, count-1)
+            val item = elements.removeAt(count-1)
+            shiftDown(index)
+            shiftUp(index)
+            item
+        }
     }
 
     abstract fun compare(a: Element, b: Element) : Int
