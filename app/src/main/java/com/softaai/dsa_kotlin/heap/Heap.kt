@@ -10,4 +10,6 @@ interface Heap<Element> : Collection<Element> {
     fun peek() : Element?
 
     fun merge(heap: AbstractHeap<Element>)
+
+    fun isMinHeap() : Boolean
 }

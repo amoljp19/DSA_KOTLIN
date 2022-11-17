@@ -157,6 +157,26 @@ abstract class AbstractHeap<Element> : Heap<Element>{
     }
 
 
+    override fun isMinHeap(): Boolean {
+        if(elements.isEmpty()) return true
+
+        (count/2 -1 downTo 0).forEach {
+            val left = leftChildIndex(it)
+            val right = rightChildIndex(it)
+
+            if (left < count && compare(elements[left], elements[it]) < 0){
+                return false
+            }
+
+            if(right < count && compare(elements[right], elements[it]) < 0){
+                return false
+            }
+        }
+
+        return true
+    }
+
+
     abstract fun compare(a: Element, b: Element) : Int
 
 
