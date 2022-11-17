@@ -4,6 +4,7 @@ import android.sax.ElementListener
 import kotlinx.coroutines.NonDisposableHandle
 import kotlinx.coroutines.NonDisposableHandle.parent
 import java.util.*
+import java.util.Collections.sort
 import kotlin.Comparator
 import kotlin.collections.ArrayList
 
@@ -80,7 +81,6 @@ abstract class AbstractHeap<Element> : Heap<Element>{
 
     }
 
-
     override fun remove(index: Int): Element? {
         if(index >= count) return null
 
@@ -93,6 +93,28 @@ abstract class AbstractHeap<Element> : Heap<Element>{
             shiftUp(index)
             item
         }
+    }
+
+    private fun index(element: Element, i : Int) : Int?{
+        if(i >= count) {
+            return null
+        }
+
+        if(compare(element, elements[i]) > 0){
+            return null   // obiously if you are looking element is greater than element at index i then it is not present below in heap.
+        }
+
+        if(element == elements[i]){
+            return i
+        }
+
+        val leftChildIndex = index(element, leftChildIndex(i))
+        if(leftChildIndex != null) return leftChildIndex
+
+        val rightChildIndex = index(element, rightChildIndex(i))
+        if(rightChildIndex != null) return rightChildIndex
+
+        return null
     }
 
     abstract fun compare(a: Element, b: Element) : Int
