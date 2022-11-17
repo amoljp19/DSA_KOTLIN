@@ -128,7 +128,25 @@ abstract class AbstractHeap<Element> : Heap<Element>{
         }
     }
 
+
+    protected fun getNthSmallestElement(n : Element) : Element?{
+        var current = 1
+
+        while(!isEmpty){
+            val element = remove()
+            if (current == n){
+                return element
+            }
+            current += 1
+        }
+
+        return null
+    }
+
+
     abstract fun compare(a: Element, b: Element) : Int
+
+
 }
 
 
@@ -171,9 +189,7 @@ class ComparatorHeapImpl<Element>(
             heap.heapify(elements)
             return heap
         }
-
-
-
     }
+
 
 }
