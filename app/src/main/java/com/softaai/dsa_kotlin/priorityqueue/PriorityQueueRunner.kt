@@ -11,7 +11,7 @@ import com.softaai.dsa_kotlin.linkedlist.example
 
 fun main(){
 
-    "max priority queue" example {
+    /*"max priority queue" example {
 
         val priorityQueue = ComparablePriorityQueueImpl<Int>()
 
@@ -23,5 +23,30 @@ fun main(){
             println(priorityQueue.dequeue())
         }
 
+    }*/
+
+
+
+    "min priority queue " example {
+
+        val comparator = object  : Comparator<String> {
+            override fun compare(p0: String?, p1: String?): Int {
+                val length1 = p0?.length ?: -1
+                val length2 = p1?.length ?: -1
+                return length2 - length1
+            }
+        }
+        val priorityQueue = ComparatorPriorityQueueImpl(comparator)
+
+        arrayListOf("one", "two", "three", "forty", "five", "six",
+            "seven", "eight", "nine").forEach{
+                priorityQueue.enqueue(it)
+        }
+
+        while(!priorityQueue.isEmpty){
+            println(priorityQueue.dequeue())
+        }
     }
+    
+
 }
