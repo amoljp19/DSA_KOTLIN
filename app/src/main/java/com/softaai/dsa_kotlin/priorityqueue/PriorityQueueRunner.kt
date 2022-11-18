@@ -27,7 +27,7 @@ fun main(){
 
 
 
-    "min priority queue " example {
+   /* "min priority queue " example {
 
         val comparator = object  : Comparator<String> {
             override fun compare(p0: String?, p1: String?): Int {
@@ -46,7 +46,25 @@ fun main(){
         while(!priorityQueue.isEmpty){
             println(priorityQueue.dequeue())
         }
+    }*/
+
+
+    "custom sorting array list priority queue" example {
+        val customSortingArrayListPriorityQueue = CustomSortingArrayListPriorityQueue<Int>()
+
+        arrayListOf(1, 12, 3, 4, 1, 6, 8, 7).forEach {
+            customSortingArrayListPriorityQueue.enqueue(it)
+        }
+
+        customSortingArrayListPriorityQueue.enqueue(5)
+        customSortingArrayListPriorityQueue.enqueue(0)
+        customSortingArrayListPriorityQueue.enqueue(10)
+
+        while (!customSortingArrayListPriorityQueue.isEmpty){
+            println(customSortingArrayListPriorityQueue.dequeue())
+        }
+
     }
-    
+
 
 }
