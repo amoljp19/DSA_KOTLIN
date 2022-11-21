@@ -19,10 +19,18 @@ fun main(){
         println("after right alignment $arrayList")
     }*/
 
-    "biggest duplicate " example {
+    /*"biggest duplicate " example {
         val arrayList = arrayListOf(3, 4, 3, 2, 3, 1, 7, 9, 8)
         println("original list $arrayList")
         println("biggest duplicate numner : ${arrayList.biggestDuplicate()}")
+    }*/
+
+
+    "manual reverse " example {
+        val arrayList = arrayListOf(3, 4, 3, 2, 3, 1, 7, 9, 8)
+        println("original list $arrayList")
+        arrayList.manualReverse()
+        println("list after manual reverse : $arrayList")
     }
 
 }
@@ -86,4 +94,33 @@ fun <T : Comparable<T>> MutableList<T>.biggestDuplicate() : T?{
     }
 
     return null
+}
+
+
+
+/*
+
+challenge 3 - Manual Reverse
+
+Reverse a list of elements by hand. Do not rely on reverse or reversed; you need to
+create your own.
+Ex . [3 4 3 2 3 1 7 9 8]  ----> [8 9 7 1 3 2 3 4 3]
+
+Logic - use double reference approach
+
+time complexity - O(n)
+
+*/
+
+
+fun <T : Comparable<T>> MutableList<T>.manualReverse(){
+
+    var left = 0
+    var right = this.size - 1
+
+    while (left < right){
+        this.swapAt(left, right)
+        left++
+        right--
+    }
 }
