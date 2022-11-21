@@ -2,6 +2,7 @@ package com.softaai.dsa_kotlin.nsqauresortinglgorithm
 
 import com.softaai.dsa_kotlin.linkedlist.example
 import com.softaai.dsa_kotlin.nsqauresortinglgorithm.bubblesort.swapAt
+import com.softaai.dsa_kotlin.nsqauresortinglgorithm.selectionsort.selectionSort
 
 
 /**
@@ -11,11 +12,17 @@ import com.softaai.dsa_kotlin.nsqauresortinglgorithm.bubblesort.swapAt
 
 fun main(){
 
-    "right alignment of given number " example {
+    /*"right alignment of given number " example {
         val arrayList = arrayListOf(3, 4, 3, 2, 3, 1, 7, 9, 8)
         println("original list $arrayList")
         arrayList.rightAlignment(3)
         println("after right alignment $arrayList")
+    }*/
+
+    "biggest duplicate " example {
+        val arrayList = arrayListOf(3, 4, 3, 2, 3, 1, 7, 9, 8)
+        println("original list $arrayList")
+        println("biggest duplicate numner : ${arrayList.biggestDuplicate()}")
     }
 
 }
@@ -50,4 +57,33 @@ fun <T : Comparable<T>> MutableList<T>.rightAlignment(element : T){
 
         searchIndex--
     }
+}
+
+
+
+/*
+
+challenge 2 - Duplicate finder
+
+Given a list of Comparable elements, return the largest element that’s a duplicate in
+the list.
+
+Ex . [2 2 4 3 3 4  5 1 7]  ----> 4
+
+Logic - first sort array then search consecutive equal numbers from end.
+
+time complexity - O(n^2) because we used sorting
+*/
+
+fun <T : Comparable<T>> MutableList<T>.biggestDuplicate() : T?{
+
+    this.selectionSort()
+
+    for(i in (1 until this.size).reversed()){
+        if(this[i] == this[i-1]){
+            return this[i]
+        }
+    }
+
+    return null
 }
