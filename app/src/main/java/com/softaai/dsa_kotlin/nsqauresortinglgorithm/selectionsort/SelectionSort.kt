@@ -8,7 +8,7 @@ import com.softaai.dsa_kotlin.nsqauresortinglgorithm.bubblesort.swapAt
  * softAai Apps.
  */
 
-fun <T : Comparable<T>> ArrayList<T>.selectionSort(showPasses : Boolean = false){
+fun <T : Comparable<T>> MutableList<T>.selectionSort(showPasses : Boolean = false){
 
     if (this.size < 2) return
 

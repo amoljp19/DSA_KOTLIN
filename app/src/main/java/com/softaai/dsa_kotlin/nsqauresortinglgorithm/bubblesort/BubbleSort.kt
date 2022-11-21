@@ -6,7 +6,7 @@ package com.softaai.dsa_kotlin.nsqauresortinglgorithm.bubblesort
  * softAai Apps.
  */
 
-fun <T : Comparable<T>> ArrayList<T>.bubbleSort(showPasses : Boolean) {
+fun <T : Comparable<T>> MutableList<T>.bubbleSort(showPasses : Boolean) {
 
     if(this.size < 2) return
 

@@ -9,7 +9,7 @@ import java.util.Collections
  * softAai Apps.
  */
 
-fun <T : Comparable<T>> ArrayList<T>.insertionSort(showPasses : Boolean = true){
+fun <T : Comparable<T>> MutableList<T>.insertionSort(showPasses : Boolean = true){
 
     if(this.size < 2) return
 
