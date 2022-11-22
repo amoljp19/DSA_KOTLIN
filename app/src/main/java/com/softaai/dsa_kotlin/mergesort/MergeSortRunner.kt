@@ -18,7 +18,7 @@ fun main(){
     "merge two iterables" example {
         val list1 = listOf(1, 2, 3, 4, 5, 6, 7, 8)
         val list2 = listOf(1, 3, 4, 5, 5, 6, 7, 7)
-        
+
         println("$list1")
         println("$list2")
         val result = mergeIterables(list1, list2)
