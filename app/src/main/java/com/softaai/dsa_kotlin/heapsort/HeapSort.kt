@@ -68,3 +68,18 @@ val ascending = Comparator { first: Int, second: Int ->
         else -> 0
     }
 }
+
+
+/*
+* challenge 2 - Current example do sorting using decending order
+* so for that we just required decending comparator only
+* */
+
+val decending = Comparator{ first : Int, second : Int ->
+    when{
+        first < second -> 1
+        first > second -> -1
+        else -> 0
+    }
+
+}
