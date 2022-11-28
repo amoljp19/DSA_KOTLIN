@@ -1,5 +1,7 @@
 package com.softaai.dsa_kotlin.graph
 
+import com.softaai.dsa_kotlin.graph.adjacencylist.AdjacencyList
+
 
 /**
  * Created by amoljp19 on 11/28/2022.

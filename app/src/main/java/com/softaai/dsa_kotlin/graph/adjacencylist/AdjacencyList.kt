@@ -1,11 +1,16 @@
-package com.softaai.dsa_kotlin.graph
+package com.softaai.dsa_kotlin.graph.adjacencylist
+
+import com.softaai.dsa_kotlin.graph.Edge
+import com.softaai.dsa_kotlin.graph.EdgeType
+import com.softaai.dsa_kotlin.graph.Graph
+import com.softaai.dsa_kotlin.graph.Vertex
 
 
 /**
  * Created by amoljp19 on 11/28/2022.
  * softAai Apps.
  */
-class AdjacencyList<T> : Graph<T>{
+class AdjacencyList<T> : Graph<T> {
 
     private val adjacencies = HashMap<Vertex<T>, ArrayList<Edge<T>>>()
 
