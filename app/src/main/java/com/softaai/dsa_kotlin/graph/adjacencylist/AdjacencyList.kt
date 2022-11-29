@@ -54,4 +54,47 @@ class AdjacencyList<T> : Graph<T> {
             }
         }
     }
+
+
+
+
+    /*
+
+Challenge 1 - Find the number of path between two vertex in graph
+Write a method to count the number of paths between two vertices in a directed
+graph. The example graph below has 5 paths from A to E:
+
+    B     D
+A              E
+    C
+*/
+
+
+    fun numberOfPaths(source : Vertex<T>, destination : Vertex<T>) : Int{
+
+        val numberOfPaths = Ref(0)
+        val visited = mutableSetOf<Vertex<T>>()
+        path(source, destination, visited, numberOfPaths)
+
+        return numberOfPaths.data
+    }
+
+
+    fun path(source: Vertex<T>, destination: Vertex<T>, visited : MutableSet<Vertex<T>>, pathCount : Ref<Int>){
+        println("Path ${pathCount.data} between ${source.data} and ${destination.data}")
+        visited.add(source)
+        if(source == destination){
+            pathCount.data += 1
+        }
+        else{
+            val neighbors = edges(source)
+            neighbors.forEach {edge ->
+               if (edge.destination !in visited){
+                   path(edge.destination, destination, visited, pathCount)
+               }
+            }
+        }
+
+        visited.remove(source)
+    }
 }
