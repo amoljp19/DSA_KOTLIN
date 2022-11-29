@@ -10,7 +10,7 @@ import com.softaai.dsa_kotlin.graph.Vertex
  * Created by amoljp19 on 11/28/2022.
  * softAai Apps.
  */
-class AdjacencyList<T> : Graph<T> {
+class AdjacencyListGraph<T> : Graph<T> {
 
     private val adjacencies = HashMap<Vertex<T>, ArrayList<Edge<T>>>()
 

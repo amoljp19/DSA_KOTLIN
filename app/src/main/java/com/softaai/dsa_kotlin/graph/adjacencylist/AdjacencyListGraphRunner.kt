@@ -1,7 +1,6 @@
 package com.softaai.dsa_kotlin.graph
 
-import com.softaai.dsa_kotlin.graph.adjacencylist.AdjacencyList
-import com.softaai.dsa_kotlin.graph.adjacencylist.Ref
+import com.softaai.dsa_kotlin.graph.adjacencylist.AdjacencyListGraph
 
 
 /**
@@ -10,7 +9,7 @@ import com.softaai.dsa_kotlin.graph.adjacencylist.Ref
  */
 fun main(){
 
-    val adjacencyListGraph = AdjacencyList<String>()
+    val adjacencyListGraph = AdjacencyListGraph<String>()
 
     val singapore = adjacencyListGraph.createVertex("Singapore")
     val hongKong = adjacencyListGraph.createVertex("Hong Kong")
@@ -46,7 +45,7 @@ fun main(){
 
 
 
-    val adjacencyListGraph1 = AdjacencyList<String>()
+   /* val adjacencyListGraph1 = AdjacencyList<String>()
 
     val a = adjacencyListGraph1.createVertex("A")
     val b = adjacencyListGraph1.createVertex("B")
@@ -65,6 +64,36 @@ fun main(){
 
 
     println("Number of Path between ${a.data} to ${e.data}  : ${adjacencyListGraph1.numberOfPaths(a, e)}")
+*/
+
+
+
+    ///Challenge 2 -> which mutual friend do Ruiz and Vincent share
+
+    val adjacencyListGraph2 = AdjacencyListGraph<String>()
+
+    val vincent = adjacencyListGraph2.createVertex("Vincent")
+    val chesley = adjacencyListGraph2.createVertex("Chesley")
+    val ruiz = adjacencyListGraph2.createVertex("Ruiz")
+    val patrick = adjacencyListGraph2.createVertex("Patrick")
+    val ray = adjacencyListGraph2.createVertex("Ray")
+    val sun = adjacencyListGraph2.createVertex("Sun")
+    val cole = adjacencyListGraph2.createVertex("Cole")
+    val kerry = adjacencyListGraph2.createVertex("Kerry")
+
+    adjacencyListGraph2.add(EdgeType.UNDIRECTED, vincent, chesley, 0.0)
+    adjacencyListGraph2.add(EdgeType.UNDIRECTED, vincent, ruiz, 0.0)
+    adjacencyListGraph2.add(EdgeType.UNDIRECTED, vincent, patrick, 0.0)
+    adjacencyListGraph2.add(EdgeType.UNDIRECTED, ruiz, ray, 0.0)
+    adjacencyListGraph2.add(EdgeType.UNDIRECTED, ruiz, sun, 0.0)
+    adjacencyListGraph2.add(EdgeType.UNDIRECTED, patrick, cole, 0.0)
+    adjacencyListGraph2.add(EdgeType.UNDIRECTED, patrick, kerry, 0.0)
+    adjacencyListGraph2.add(EdgeType.UNDIRECTED, cole, ruiz, 0.0)
+    adjacencyListGraph2.add(EdgeType.UNDIRECTED, cole, vincent, 0.0)
+    
+    println(adjacencyListGraph2)
+
+    println("Ruiz and Vincent both share a friend name Cole")
 
 
 }
