@@ -32,7 +32,7 @@ fun main(){
 
     println(depthFirstSearchGraph)
 
-    val vertices = depthFirstSearchGraph.depthFirstSearch(a)
+    val vertices = depthFirstSearchGraph.depthFirstSearchRecursiveWithoutStack(a)
     vertices.forEach {
         println(it.data)
     }

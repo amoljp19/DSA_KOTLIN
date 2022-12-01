@@ -100,4 +100,70 @@ class DfsGraph<T> : Graph<T> {
 
         return visited
     }
+
+
+    fun depthFirstSearchRecursive(source : Vertex<T>) : ArrayList<Vertex<T>>{
+        val stack = StackImpl<Vertex<T>>()
+        val pushed = ArrayList<Vertex<T>>()
+        val visited = ArrayList<Vertex<T>>()
+
+        stack.push(source)
+        pushed.add(source)
+        visited.add(source)
+
+        dfs(stack, pushed, visited)
+
+        return visited
+    }
+
+    fun dfs(stack : StackImpl<Vertex<T>>, pushed : ArrayList<Vertex<T>>, visited : ArrayList<Vertex<T>>){
+        if (stack.isEmpty){
+            return
+        }
+
+        val vertex = stack.peek()!!
+        val neighborEdges = edges(vertex)
+
+        if (neighborEdges.isEmpty()){
+            stack.pop()
+            dfs(stack, pushed, visited)
+        }
+
+        for (i in 0 until neighborEdges.size){
+            val destination = neighborEdges[i].destination
+            if (destination !in pushed){
+                stack.push(destination)
+                pushed.add(destination)
+                visited.add(destination)
+                dfs(stack, pushed, visited)
+            }
+        }
+
+        stack.pop()
+    }
+
+
+    // best approach with less code
+
+    fun depthFirstSearchRecursiveWithoutStack(source: Vertex<T>) : ArrayList<Vertex<T>>{
+        val pushed = ArrayList<Vertex<T>>()
+        val visited = ArrayList<Vertex<T>>()
+        dfsRecursiveWithoutStack(source, pushed, visited)
+        return visited
+    }
+
+    fun dfsRecursiveWithoutStack(source: Vertex<T>, pushed : ArrayList<Vertex<T>>, visited: ArrayList<Vertex<T>>) {
+
+
+        pushed.add(source)
+        visited.add(source)
+
+        val neighbors = edges(source)
+
+        neighbors.forEach {
+            if (it.destination !in pushed){
+                dfsRecursiveWithoutStack(it.destination, pushed, visited)
+            }
+        }
+    }
 }
