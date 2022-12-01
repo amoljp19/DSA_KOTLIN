@@ -10,6 +10,7 @@ import android.graphics.Canvas
 
 interface Graph<T> {
 
+    val allVertices : ArrayList<Vertex<T>>
     fun createVertex(data : T) : Vertex<T>
 
     fun addDirectedEdges(source : Vertex<T>, destination : Vertex<T>, weight : Double?)

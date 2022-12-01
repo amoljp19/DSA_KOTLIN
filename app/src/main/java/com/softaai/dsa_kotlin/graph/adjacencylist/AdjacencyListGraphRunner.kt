@@ -112,7 +112,7 @@ fun main(){
     breadthFirstSearchGraph.add(EdgeType.DIRECTED, a, b, 300.0)
     breadthFirstSearchGraph.add(EdgeType.DIRECTED, a, c, 500.0)
     breadthFirstSearchGraph.add(EdgeType.DIRECTED, a, d, 250.0)
-    breadthFirstSearchGraph.add(EdgeType.DIRECTED, b, e, 450.0)
+    breadthFirstSearchGraph.add(EdgeType.DIRECTED, b, e, 450.0)   //to check isDiscoonected function working comment this line, after testing remove comment
     breadthFirstSearchGraph.add(EdgeType.DIRECTED, c, f,300.0)
     breadthFirstSearchGraph.add(EdgeType.DIRECTED, c, g,300.0)
     breadthFirstSearchGraph.add(EdgeType.DIRECTED, e, f,300.0)
@@ -122,7 +122,7 @@ fun main(){
 
     //println(breadthFirstSearchGraph.breadthFirstSearch(a))
 
-    val vertices = breadthFirstSearchGraph.breadthFirstSearch(a)
+    /*val vertices = breadthFirstSearchGraph.breadthFirstSearch(a)
 
     vertices.forEach {
         println(it.data)
@@ -136,6 +136,10 @@ fun main(){
     }
 
 
+*/
+
+
+   // println(breadthFirstSearchGraph.isDisconnectedGraph())
 
    /* val breadthFirstSearchChallenge1Graph = AdjacencyListGraph<String>()
 

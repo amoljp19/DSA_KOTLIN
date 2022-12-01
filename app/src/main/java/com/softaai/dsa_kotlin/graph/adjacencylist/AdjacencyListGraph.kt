@@ -15,6 +15,9 @@ class AdjacencyListGraph<T> : Graph<T> {
 
     private val adjacencies = HashMap<Vertex<T>, ArrayList<Edge<T>>>()
 
+    override val allVertices: ArrayList<Vertex<T>>
+    get() = ArrayList(adjacencies.keys)
+
 
     override fun createVertex(data: T): Vertex<T> {
         val vertex = Vertex(adjacencies.count(), data)
@@ -193,6 +196,24 @@ A              E
         }
 
         bfs(queue, enqueued, visited)
+    }
+
+
+    //Challenge 3 -> find is graph disconnected
+    // so logic is first get all vertices and then run bfs from first node if any not visited found then its disconnected graph
+
+
+    fun isDisconnectedGraph() : Boolean{
+        val firstVertex = allVertices.firstOrNull() ?: return false
+
+        val visited = breadthFirstSearch(firstVertex)
+
+        allVertices.forEach {
+            if (!visited.contains(it)){
+                return true
+            }
+        }
+        return false
     }
 
 }

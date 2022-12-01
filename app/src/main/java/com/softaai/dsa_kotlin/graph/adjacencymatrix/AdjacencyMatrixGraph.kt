@@ -15,6 +15,9 @@ class AdjacencyMatrixGraph<T> : Graph<T> {
     private val vertices = arrayListOf<Vertex<T>>()
     private val weights = arrayListOf<ArrayList<Double?>>()
 
+    override val allVertices: ArrayList<Vertex<T>>
+    get() = vertices
+
     override fun createVertex(data: T): Vertex<T> {
         val vertex = Vertex(vertices.count(), data)
         vertices.add(vertex)
