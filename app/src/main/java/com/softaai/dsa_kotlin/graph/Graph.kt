@@ -22,4 +22,8 @@ interface Graph<T> {
 
     fun weight(source: Vertex<T>, destination: Vertex<T>) : Double?
 
+    fun breadthFirstSearch(source: Vertex<T>) : ArrayList<Vertex<T>>
+
+
+
 }

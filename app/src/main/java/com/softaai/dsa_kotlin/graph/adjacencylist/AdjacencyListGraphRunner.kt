@@ -9,7 +9,7 @@ import com.softaai.dsa_kotlin.graph.adjacencylist.AdjacencyListGraph
  */
 fun main(){
 
-    val adjacencyListGraph = AdjacencyListGraph<String>()
+   /* val adjacencyListGraph = AdjacencyListGraph<String>()
 
     val singapore = adjacencyListGraph.createVertex("Singapore")
     val hongKong = adjacencyListGraph.createVertex("Hong Kong")
@@ -32,7 +32,7 @@ fun main(){
     adjacencyListGraph.add(EdgeType.UNDIRECTED, washington, seattle, 277.0)
     adjacencyListGraph.add(EdgeType.UNDIRECTED, sanfrancisco, seattle, 218.0)
     adjacencyListGraph.add(EdgeType.UNDIRECTED, austin, sanfrancisco,297.0)
-
+*/
     //println(adjacencyGraph)
 
    // println("How much from tokyo to singapore : ${adjacencyGraph.weight(tokyo, singapore)}")
@@ -70,7 +70,7 @@ fun main(){
 
     ///Challenge 2 -> which mutual friend do Ruiz and Vincent share
 
-    val adjacencyListGraph2 = AdjacencyListGraph<String>()
+    /*val adjacencyListGraph2 = AdjacencyListGraph<String>()
 
     val vincent = adjacencyListGraph2.createVertex("Vincent")
     val chesley = adjacencyListGraph2.createVertex("Chesley")
@@ -90,10 +90,44 @@ fun main(){
     adjacencyListGraph2.add(EdgeType.UNDIRECTED, patrick, kerry, 0.0)
     adjacencyListGraph2.add(EdgeType.UNDIRECTED, cole, ruiz, 0.0)
     adjacencyListGraph2.add(EdgeType.UNDIRECTED, cole, vincent, 0.0)
-    
+
     println(adjacencyListGraph2)
 
     println("Ruiz and Vincent both share a friend name Cole")
+*/
+
+
+
+    val breadthFirstSearchGraph = AdjacencyListGraph<String>()
+
+    val a = breadthFirstSearchGraph.createVertex("A")
+    val b = breadthFirstSearchGraph.createVertex("B")
+    val c = breadthFirstSearchGraph.createVertex("C")
+    val d = breadthFirstSearchGraph.createVertex("D")
+    val e = breadthFirstSearchGraph.createVertex("E")
+    val f = breadthFirstSearchGraph.createVertex("F")
+    val g = breadthFirstSearchGraph.createVertex("G")
+    val h = breadthFirstSearchGraph.createVertex("H")
+
+    breadthFirstSearchGraph.add(EdgeType.DIRECTED, a, b, 300.0)
+    breadthFirstSearchGraph.add(EdgeType.DIRECTED, a, c, 500.0)
+    breadthFirstSearchGraph.add(EdgeType.DIRECTED, a, d, 250.0)
+    breadthFirstSearchGraph.add(EdgeType.DIRECTED, b, e, 450.0)
+    breadthFirstSearchGraph.add(EdgeType.DIRECTED, c, f,300.0)
+    breadthFirstSearchGraph.add(EdgeType.DIRECTED, c, g,300.0)
+    breadthFirstSearchGraph.add(EdgeType.DIRECTED, e, f,300.0)
+    breadthFirstSearchGraph.add(EdgeType.DIRECTED, e, h,300.0)
+
+    println(breadthFirstSearchGraph)
+
+    //println(breadthFirstSearchGraph.breadthFirstSearch(a))
+
+    val vertices = breadthFirstSearchGraph.breadthFirstSearch(a)
+
+    vertices.forEach {
+        println(it.data)
+    }
+
 
 
 }

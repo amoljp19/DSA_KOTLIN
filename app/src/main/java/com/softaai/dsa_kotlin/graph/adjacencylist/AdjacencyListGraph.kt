@@ -4,6 +4,7 @@ import com.softaai.dsa_kotlin.graph.Edge
 import com.softaai.dsa_kotlin.graph.EdgeType
 import com.softaai.dsa_kotlin.graph.Graph
 import com.softaai.dsa_kotlin.graph.Vertex
+import com.softaai.dsa_kotlin.queue.implementation.StackQueue
 
 
 /**
@@ -96,5 +97,34 @@ A              E
         }
 
         visited.remove(source)
+    }
+
+
+
+    // BREADTH FIRST SEARCH ALGORITHM
+
+    override fun breadthFirstSearch(source: Vertex<T>): ArrayList<Vertex<T>> {
+        val queue = StackQueue<Vertex<T>>()
+        val enqeued = ArrayList<Vertex<T>>()
+        val visited = ArrayList<Vertex<T>>()
+
+        queue.enqueue(source)
+        enqeued.add(source)
+
+        while (true){
+            val vertex = queue.dequeue() ?: break
+
+            visited.add(vertex)
+
+            val neighborsEdges = edges(vertex)
+            neighborsEdges.forEach {
+                if (!enqeued.contains(it.destination)){
+                    queue.enqueue(it.destination)
+                    enqeued.add(it.destination)
+                }
+            }
+        }
+
+        return visited
     }
 }
