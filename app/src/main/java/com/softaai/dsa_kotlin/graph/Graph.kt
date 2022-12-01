@@ -25,6 +25,8 @@ interface Graph<T> {
 
     fun breadthFirstSearch(source: Vertex<T>) : ArrayList<Vertex<T>>
 
+    fun depthFirstSearch(source: Vertex<T>) : ArrayList<Vertex<T>>
+
 
 
 }

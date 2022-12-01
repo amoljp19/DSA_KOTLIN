@@ -90,4 +90,8 @@ class AdjacencyMatrixGraph<T> : Graph<T> {
     override fun breadthFirstSearch(source: Vertex<T>): ArrayList<Vertex<T>> {
         TODO("Not yet implemented")
     }
+
+    override fun depthFirstSearch(source: Vertex<T>): ArrayList<Vertex<T>> {
+        TODO("Not yet implemented")
+    }
 }

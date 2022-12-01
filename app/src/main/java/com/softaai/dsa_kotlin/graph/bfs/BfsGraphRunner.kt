@@ -10,7 +10,7 @@ import com.softaai.dsa_kotlin.graph.adjacencylist.AdjacencyListGraph
  */
 
 fun main(){
-    val breadthFirstSearchGraph = AdjacencyListGraph<String>()
+    val breadthFirstSearchGraph = BfsGraph<String>()
 
     val a = breadthFirstSearchGraph.createVertex("A")
     val b = breadthFirstSearchGraph.createVertex("B")

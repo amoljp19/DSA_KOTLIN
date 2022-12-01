@@ -1,23 +1,22 @@
-package com.softaai.dsa_kotlin.graph.adjacencylist
+package com.softaai.dsa_kotlin.graph.dfs
 
 import com.softaai.dsa_kotlin.graph.Edge
 import com.softaai.dsa_kotlin.graph.EdgeType
 import com.softaai.dsa_kotlin.graph.Graph
 import com.softaai.dsa_kotlin.graph.Vertex
-import com.softaai.dsa_kotlin.queue.implementation.StackQueue
+import com.softaai.dsa_kotlin.stack.StackImpl
 
 
 /**
- * Created by amoljp19 on 11/28/2022.
+ * Created by amoljp19 on 12/1/2022.
  * softAai Apps.
  */
-class AdjacencyListGraph<T> : Graph<T> {
+class DfsGraph<T> : Graph<T> {
 
     private val adjacencies = HashMap<Vertex<T>, ArrayList<Edge<T>>>()
 
     override val allVertices: ArrayList<Vertex<T>>
-    get() = ArrayList(adjacencies.keys)
-
+        get() = ArrayList(adjacencies.keys)
 
     override fun createVertex(data: T): Vertex<T> {
         val vertex = Vertex(adjacencies.count(), data)
@@ -61,54 +60,44 @@ class AdjacencyListGraph<T> : Graph<T> {
     }
 
 
-
-
-    /*
-
-Challenge 1 - Find the number of path between two vertex in graph
-Write a method to count the number of paths between two vertices in a directed
-graph. The example graph below has 5 paths from A to E:
-
-    B     D
-A              E
-    C
-*/
-
-
-    fun numberOfPaths(source : Vertex<T>, destination : Vertex<T>) : Int{
-
-        val numberOfPaths = Ref(0)
-        val visited = mutableSetOf<Vertex<T>>()
-        path(source, destination, visited, numberOfPaths)
-
-        return numberOfPaths.data
-    }
-
-
-    fun path(source: Vertex<T>, destination: Vertex<T>, visited : MutableSet<Vertex<T>>, pathCount : Ref<Int>){
-        println("Path ${pathCount.data} between ${source.data} and ${destination.data}")
-        visited.add(source)
-        if(source == destination){
-            pathCount.data += 1
-        }
-        else{
-            val neighbors = edges(source)
-            neighbors.forEach {edge ->
-               if (edge.destination !in visited){
-                   path(edge.destination, destination, visited, pathCount)
-               }
-            }
-        }
-
-        visited.remove(source)
-    }
-
-
     override fun breadthFirstSearch(source: Vertex<T>): ArrayList<Vertex<T>> {
         TODO("Not yet implemented")
     }
 
     override fun depthFirstSearch(source: Vertex<T>): ArrayList<Vertex<T>> {
-        TODO("Not yet implemented")
+        val stack = StackImpl<Vertex<T>>()
+        val pushed = arrayListOf<Vertex<T>>()
+        val visited = arrayListOf<Vertex<T>>()
+
+        stack.push(source)
+        pushed.add(source)
+        visited.add(source)
+
+        outer@ while (true){
+          if (stack.isEmpty){
+              break
+          }
+
+            val vertex = stack.peek()!!
+            val neighborEdges = edges(vertex)
+
+            if (neighborEdges.isEmpty()){
+                stack.pop()
+                continue
+            }
+
+            for (i in 0 until neighborEdges.size){
+                val destination = neighborEdges[i].destination
+                if (destination !in pushed){
+                    stack.push(destination)
+                    pushed.add(destination)
+                    visited.add(destination)
+                    continue@outer
+                }
+            }
+            stack.pop()
+        }
+
+        return visited
     }
 }
