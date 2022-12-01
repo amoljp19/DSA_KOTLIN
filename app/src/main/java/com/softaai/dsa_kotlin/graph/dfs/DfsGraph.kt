@@ -166,4 +166,28 @@ class DfsGraph<T> : Graph<T> {
             }
         }
     }
+
+    fun hasCycle(source : Vertex<T>) : Boolean{
+        val pushed = ArrayList<Vertex<T>>()
+        return hasCycle(source, pushed)
+    }
+
+    fun hasCycle(source: Vertex<T>, pushed: ArrayList<Vertex<T>>) : Boolean{
+        pushed.add(source)
+
+        val neighbors = edges(source)
+        neighbors.forEach {
+            if (it.destination !in pushed && hasCycle(it.destination, pushed)){
+                return true
+            }
+            if (it.destination in pushed){
+                return true
+            }
+        }
+
+        pushed.remove(source)
+        return false
+    }
+
+
 }
