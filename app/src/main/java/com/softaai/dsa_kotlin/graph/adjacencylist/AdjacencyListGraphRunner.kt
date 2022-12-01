@@ -98,7 +98,7 @@ fun main(){
 
 
 
-    /*val breadthFirstSearchGraph = AdjacencyListGraph<String>()
+    val breadthFirstSearchGraph = AdjacencyListGraph<String>()
 
     val a = breadthFirstSearchGraph.createVertex("A")
     val b = breadthFirstSearchGraph.createVertex("B")
@@ -118,7 +118,7 @@ fun main(){
     breadthFirstSearchGraph.add(EdgeType.DIRECTED, e, f,300.0)
     breadthFirstSearchGraph.add(EdgeType.DIRECTED, e, h,300.0)
 
-    println(breadthFirstSearchGraph)
+    //println(breadthFirstSearchGraph)
 
     //println(breadthFirstSearchGraph.breadthFirstSearch(a))
 
@@ -127,11 +127,17 @@ fun main(){
     vertices.forEach {
         println(it.data)
     }
-*/
+
+    println("-------------------------------------------")
+
+    val vertices1 = breadthFirstSearchGraph.breadthFirstSearchUsingRecursion(a)
+    vertices1.forEach {
+        println(it.data)
+    }
 
 
 
-    val breadthFirstSearchChallenge1Graph = AdjacencyListGraph<String>()
+   /* val breadthFirstSearchChallenge1Graph = AdjacencyListGraph<String>()
 
     val a = breadthFirstSearchChallenge1Graph.createVertex("A")
     val b = breadthFirstSearchChallenge1Graph.createVertex("B")
@@ -159,6 +165,8 @@ fun main(){
     println(breadthFirstSearchChallenge1Graph)
 
     println(breadthFirstSearchChallenge1Graph.getMaximunCountInQueueEver(a))
+   */
+
 
 
 

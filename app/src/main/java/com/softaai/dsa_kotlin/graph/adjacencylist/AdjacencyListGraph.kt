@@ -15,6 +15,7 @@ class AdjacencyListGraph<T> : Graph<T> {
 
     private val adjacencies = HashMap<Vertex<T>, ArrayList<Edge<T>>>()
 
+
     override fun createVertex(data: T): Vertex<T> {
         val vertex = Vertex(adjacencies.count(), data)
         adjacencies[vertex] = ArrayList()
@@ -159,6 +160,39 @@ A              E
         }
 
         return maxCountEverInQueue
+    }
+
+
+    //challenge 2 -> implement breadth first search using recursion
+
+    fun breadthFirstSearchUsingRecursion(source : Vertex<T>) : ArrayList<Vertex<T>>{
+        val queue = StackQueue<Vertex<T>>()
+        val enqueued = ArrayList<Vertex<T>>()
+        val visited = ArrayList<Vertex<T>>()
+
+        queue.enqueue(source)
+        enqueued.add(source)
+
+        bfs(queue, enqueued, visited)
+
+        return visited
+    }
+
+
+    fun bfs(queue: StackQueue<Vertex<T>>, enqueued: ArrayList<Vertex<T>>, visited: ArrayList<Vertex<T>>){
+        val vertex = queue.dequeue() ?: return
+
+        visited.add(vertex)
+
+        val neighborEdges = edges(vertex)
+        neighborEdges.forEach {
+            if (!enqueued.contains(it.destination)){
+                queue.enqueue(it.destination)
+                enqueued.add(it.destination)
+            }
+        }
+
+        bfs(queue, enqueued, visited)
     }
 
 }
