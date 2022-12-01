@@ -98,7 +98,7 @@ fun main(){
 
 
 
-    val breadthFirstSearchGraph = AdjacencyListGraph<String>()
+    /*val breadthFirstSearchGraph = AdjacencyListGraph<String>()
 
     val a = breadthFirstSearchGraph.createVertex("A")
     val b = breadthFirstSearchGraph.createVertex("B")
@@ -127,6 +127,39 @@ fun main(){
     vertices.forEach {
         println(it.data)
     }
+*/
+
+
+
+    val breadthFirstSearchChallenge1Graph = AdjacencyListGraph<String>()
+
+    val a = breadthFirstSearchChallenge1Graph.createVertex("A")
+    val b = breadthFirstSearchChallenge1Graph.createVertex("B")
+    val c = breadthFirstSearchChallenge1Graph.createVertex("C")
+    val d = breadthFirstSearchChallenge1Graph.createVertex("D")
+    val e = breadthFirstSearchChallenge1Graph.createVertex("E")
+    val f = breadthFirstSearchChallenge1Graph.createVertex("F")
+    val g = breadthFirstSearchChallenge1Graph.createVertex("G")
+    val h = breadthFirstSearchChallenge1Graph.createVertex("H")
+    val i = breadthFirstSearchChallenge1Graph.createVertex("I")
+    val j = breadthFirstSearchChallenge1Graph.createVertex("J")
+
+    breadthFirstSearchChallenge1Graph.add(EdgeType.UNDIRECTED, a, b, 300.0)
+    breadthFirstSearchChallenge1Graph.add(EdgeType.UNDIRECTED, a, c, 500.0)
+    breadthFirstSearchChallenge1Graph.add(EdgeType.UNDIRECTED, a, d, 250.0)
+    breadthFirstSearchChallenge1Graph.add(EdgeType.UNDIRECTED, c, i, 450.0)
+    breadthFirstSearchChallenge1Graph.add(EdgeType.UNDIRECTED, d, i,300.0)
+    breadthFirstSearchChallenge1Graph.add(EdgeType.UNDIRECTED, i, j,300.0)
+    breadthFirstSearchChallenge1Graph.add(EdgeType.UNDIRECTED, i, g,300.0)
+    breadthFirstSearchChallenge1Graph.add(EdgeType.UNDIRECTED, i, f,300.0)
+    breadthFirstSearchChallenge1Graph.add(EdgeType.UNDIRECTED, f, g,300.0)
+    breadthFirstSearchChallenge1Graph.add(EdgeType.UNDIRECTED, f, e,300.0)
+    breadthFirstSearchChallenge1Graph.add(EdgeType.UNDIRECTED, e, h,300.0)
+
+    println(breadthFirstSearchChallenge1Graph)
+
+    println(breadthFirstSearchChallenge1Graph.getMaximunCountInQueueEver(a))
+
 
 
 
