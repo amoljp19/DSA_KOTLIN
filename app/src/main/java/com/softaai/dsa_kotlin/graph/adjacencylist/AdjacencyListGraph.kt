@@ -18,6 +18,9 @@ class AdjacencyListGraph<T> : Graph<T> {
     override val allVertices: ArrayList<Vertex<T>>
     get() = ArrayList(adjacencies.keys)
 
+    val vertices : Set<Vertex<T>>
+    get() = adjacencies.keys
+
 
     override fun createVertex(data: T): Vertex<T> {
         val vertex = Vertex(adjacencies.count(), data)
@@ -110,5 +113,11 @@ A              E
 
     override fun depthFirstSearch(source: Vertex<T>): ArrayList<Vertex<T>> {
         TODO("Not yet implemented")
+    }
+
+    fun copyGraph(graph: AdjacencyListGraph<T>){
+        graph.vertices.forEach {
+            adjacencies[it] = arrayListOf()
+        }
     }
 }
